@@ -12585,7 +12585,7 @@ div#notebook {
     <th style="text-align:left;">頻度</th>
   </tr>
    <tr>
-    <th style="text-align:left;">2018/11[8,9],2018/06[12],2016/11[10],2017/11[12]</th>
+    <th style="text-align:left;">2018/11[8,9],2018/06[12],2017/11[12],2016/11[10]</th>
     <th style="text-align:left;"></th>
   </tr>
 </table>
@@ -13183,16 +13183,6 @@ div#notebook {
     <th style="text-align:left;font-size: 20px;">${\frac{1}{λ^2}}$</th>
      <th style="text-align:left;font-size: 15px;">$Ex(λ)$</th>
   </tr>
-   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">正規分布</th>
-    <th style="text-align:left;">期待値μの付近に標準偏差σで集積する分布</th>
-    <th  style="text-align:left;font-size: 15px;">$\frac{1}{\sqrt{2\pi \sigma^2}} \exp \left(-\frac{(x - \mu)^2}
-{2\sigma^2} \right) \hspace{20px}$</th>
-    <th style="text-align:left;font-size: 15px;">$\mu$</th>
-    <th style="text-align:left;font-size: 15px;">$\sigma^2$</th>
-    <th style="text-align:left;font-size: 15px;">$N(\mu,\sigma^2)$</th>
-  </tr>
   <tr>
     <th style="text-align:left;">連続</th>
     <th style="text-align:left;">連続一様分布</th>
@@ -13277,7 +13267,7 @@ div#notebook {
   </tr>
   <tr>
     <th style="text-align:left;">標準化</th>
-    <th style="text-align:left;font-size: 15px;">$X \sim \mathcal{N}(\mu, \sigma^{2})$の時、$z={\large\frac{X-\mu}{\sigma}}$と定義すると$Z \sim \mathcal{N}(0, 1)$となる。<br>標準化を行うことにより、単位や平均値などが異なるデータ同士を正規分布表を使って比較できるようになる。</th>
+    <th style="text-align:left;font-size: 15px;">$X \sim \mathcal{N}(\mu, \sigma^{2})$の時、$Z={\large\frac{X-\mu}{\sigma}}$と定義すると$Z \sim \mathcal{N}(0, 1)$となる。<br>標準化を行うことにより、単位や平均値などが異なるデータ同士を正規分布表を使って比較できるようになる。</th>
   </tr>
   <tr>
     <th style="text-align:left;">正規分布の再生性</th>
@@ -13558,7 +13548,7 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
   <tr>
     <th style="text-align:left;">02</th>
     <th style="text-align:left;">成功回数を標準化する</th>
-    <th style="text-align:left;font-size: 15px;">十分大きなnに対して $B(n,p)$ は正規分布 $N(np,np(1-p))$に近似できる。<br>よって成功回数Xが二項分布$B(n,p)$に従う場合、Xを標準化したZは$N(0,1)$に従う。<br>$\LARGE{Z=\frac{X-μ}{σ}=\frac{X-np}{\sqrt{np(1-p)}}}$</th>
+    <th style="text-align:left;font-size: 15px;">十分大きなnに対して $B(n,p)$ は正規分布 $N(np,np(1-p))$に近似できる。(ラプラスの定理)<br>よって成功回数Xが二項分布$B(n,p)$に従う場合、Xを標準化したZは$N(0,1)$に従う。<br>$\LARGE{Z=\frac{X-μ}{σ}=\frac{X-np}{\sqrt{np(1-p)}}}$</th>
   </tr>
   <tr>
     <th style="text-align:left;">03</th>
@@ -14156,11 +14146,16 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
   </tr>
   <tr>
     <th style="text-align:left;">04</th>
-    <th style="text-align:left;">統計量Zを算出</th>
-    <th style="text-align:left;font-size: 20px;">統計量 $\large{Z}=\frac{\widehat{p}_{1}-\widehat{p}_{2}}{\sqrt{\widehat{p}(1-\widehat{p}) \left(\frac{1}{n_1}+\frac{1}{n_2} \right)}}$<br>$\widehat{p}_1$=1郡目の標本比率 $\,\,\,\, \widehat{p}_2$=2郡目の標本比率<br>$n_1$=1郡目のサンプル数 $\,\,\,\, n_2$=2郡目のサンプル数 <br>プールした標本比率 $\widehat{p}=\frac{n_1\widehat{p}_1+n_2\widehat{p}_2}{n_1+n_2}$</th>
+    <th style="text-align:left;">プールした標本比率 $\widehat{p}$を算出</th>
+    <th style="text-align:left;font-size: 20px;">プールした標本比率 $\widehat{p}=\frac{n_1\widehat{p}_1+n_2\widehat{p}_2}{n_1+n_2}$<br>$\widehat{p}_1$=1郡目の標本比率 $\,\,\,\, \widehat{p}_2$=2郡目の標本比率<br>$n_1$=1郡目のサンプル数 $\,\,\,\, n_2$=2郡目のサンプル数 <br></th>
   </tr>
   <tr>
     <th style="text-align:left;">05</th>
+    <th style="text-align:left;">統計量Zを算出</th>
+    <th style="text-align:left;font-size: 20px;">統計量 $\large{Z}=\frac{\widehat{p}_{1}-\widehat{p}_{2}}{\sqrt{\widehat{p}(1-\widehat{p}) \left(\frac{1}{n_1}+\frac{1}{n_2} \right)}}$</th>
+  </tr>
+  <tr>
+    <th style="text-align:left;">06</th>
     <th style="text-align:left;">正規分布で有意水準か確認</th>
     <th style="text-align:left;">統計量Zの値より、正規分布で確率を確認し両側検定なので二倍した値が、有意水準より大きい場合は、帰無仮説を棄却</th>
   </tr>
@@ -14381,10 +14376,6 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
     <th style="text-align:left;">実際のデータを用いて推定された回帰式から算出される値と実際のデータとの差。計算で求められる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">回帰式</th>
-    <th style="text-align:left;">$\large{y=\beta_{0}+\beta_{1} x}\,\,\,\,\,\beta_{0}$は切片を表す。$\large{\beta_{0}}$は偏回帰係数を表す。</th>
-  </tr>
-  <tr>
     <th style="text-align:left;">残差平方和</th>
     <th style="text-align:left;">RSSで表される。残差の平方（二乗）の和</th>
   </tr>
@@ -14426,11 +14417,11 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
   </tr>
   <tr>
     <th style="text-align:left;">回帰係数</th>
-    <th style="text-align:left;">y=ax+bとモデルがある場合、bの値。$\LARGE{\frac{XとYの共分散}{Xの分散}} \,\,\,\,\,\,\,$で算出できる。</th>
+    <th style="text-align:left;">y=ax+bとモデルがある場合、aの値。$\LARGE{\frac{XとYの共分散}{Xの分散}} \,\,\,\,\,\,\,$で算出できる。</th>
   </tr>
   <tr>
     <th style="text-align:left;">切片</th>
-    <th style="text-align:left;">y=ax+bとモデルがある場合、aの値。$\LARGE{(Yの平均) ー [回帰係数(b) ＊ (Xの平均)]}$で算出できる。</th>
+    <th style="text-align:left;">y=ax+bとモデルがある場合、bの値。$\LARGE{(Yの平均) ー [回帰係数(b) ＊ (Xの平均)]}$で算出できる。</th>
   </tr>
   <tr>
     <th style="text-align:left;">P-値</th>
@@ -14459,7 +14450,7 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
     <th style="text-align:left;">頻度</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[29,30,31],2018/06[28,29,30],2017/11[24,26]</th>
+    <th style="text-align:left;">2018/11[29,30,31],2018/06[28,29,30],2017/11[26,24]</th>
     <th style="text-align:left;"></th>
   </tr>
 </table>
