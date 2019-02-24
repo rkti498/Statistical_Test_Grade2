@@ -1,8 +1,64 @@
+
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
-<title>mathematical formula</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>mathematical formula slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="reveal.js/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -11718,145 +11774,219 @@ ul.typeahead-list > li > a {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+  font-size: 160%;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+div.text_cell.rendered .rendered_html {
+  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
+  overflow-y: hidden;
+}
+a.anchor-link {
+  /* There is still an anchor, we are only hidding it */
+  display: none;
+}
+.rendered_html p {
+  text-align: inherit;
+}
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --></head>
-<body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+</head>
 
+
+<body>
+
+
+<div class="reveal">
+<div class="slides">
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="&#32113;&#35336;&#26908;&#23450;2&#32026;-&#36942;&#21435;&#21839;&#12398;&#30906;&#35469;&#29366;&#27841;&#12290;">&#32113;&#35336;&#26908;&#23450;2&#32026; &#36942;&#21435;&#21839;&#12398;&#30906;&#35469;&#29366;&#27841;&#12290;<a class="anchor-link" href="#&#32113;&#35336;&#26908;&#23450;2&#32026;-&#36942;&#21435;&#21839;&#12398;&#30906;&#35469;&#29366;&#27841;&#12290;">&#182;</a></h1><table>
-  <tr>
-    <th style="text-align:left;">実施年度</th>
-    <th style="text-align:left;">問題数</th>
-    <th style="text-align:left;">確認した日</th>
+  <tbody><tr>
+    <th style="text-align: left;">実施年度</th>
+    <th style="text-align: left;">問題数</th>
+    <th style="text-align: left;">確認した日</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;">2019/01/19</th>
+    <th style="text-align: left;">2018/11</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;">2019/01/19</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;">2019/02/11</th>
+    <th style="text-align: left;">2018/06</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;">2019/02/11</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2017/11</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;">2019/02/17</th>
+    <th style="text-align: left;">2017/11</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;">2019/02/17</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2017/06</th>
-    <th style="text-align:left;">35</th>
-    <th style="text-align:left;">2019/02/22</th>
+    <th style="text-align: left;">2017/06</th>
+    <th style="text-align: left;">35</th>
+    <th style="text-align: left;">2019/02/22</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2016/11</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2016/11</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2016/06</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2016/06</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2015/11</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2015/11</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2015/06</th>
-    <th style="text-align:left;">34</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2015/06</th>
+    <th style="text-align: left;">34</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2014/11</th>
-    <th style="text-align:left;">35</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2014/11</th>
+    <th style="text-align: left;">35</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2014/06</th>
-    <th style="text-align:left;">33</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2014/06</th>
+    <th style="text-align: left;">33</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2013/11</th>
-    <th style="text-align:left;">35</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2013/11</th>
+    <th style="text-align: left;">35</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2013/05</th>
-    <th style="text-align:left;">35</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2013/05</th>
+    <th style="text-align: left;">35</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2012/11</th>
-    <th style="text-align:left;">35</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2012/11</th>
+    <th style="text-align: left;">35</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2012/05</th>
-    <th style="text-align:left;">35</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2012/05</th>
+    <th style="text-align: left;">35</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">2011/11</th>
-    <th style="text-align:left;">33</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">2011/11</th>
+    <th style="text-align: left;">33</th>
+    <th style="text-align: left;"></th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -11873,22 +12003,22 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">参考サイト</th>
-    <th style="text-align:left;">URL</th>
-    <th style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">参考サイト</th>
+    <th style="text-align: left;">URL</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">統計Web</th>
-    <th style="text-align:left;">https://bellcurve.jp/statistics/</th>
-    <th style="text-align:left;">過去問の説明が分かり易い。</th>
+    <th style="text-align: left;">統計Web</th>
+    <th style="text-align: left;">https://bellcurve.jp/statistics/</th>
+    <th style="text-align: left;">過去問の説明が分かり易い。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">データ科学便覧</th>
-    <th style="text-align:left;">https://data-science.gr.jp/theory.html#tpd</th>
-    <th style="text-align:left;">統計Webでカバーしてない難しい公式など。</th>
+    <th style="text-align: left;">データ科学便覧</th>
+    <th style="text-align: left;">https://data-science.gr.jp/theory.html#tpd</th>
+    <th style="text-align: left;">統計Webでカバーしてない難しい公式など。</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -11913,17 +12043,22 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">項目</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">項目</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">度数分布表</th>
-    <th style="text-align:left;">2018/11[1],2017/11[1,2,3],2017/06[3,4,5]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">度数分布表</th>
+    <th style="text-align: left;">2018/11[1],2017/11[1,2,3],2017/06[3,4,5]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+  <tr>
+    <th style="text-align: left;">ヒストグラム</th>
+    <th style="text-align: left;">2017/11[3,8],2017/06[2]</th>
+    <th style="text-align: left;">50%</th>
+  </tr>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -11939,6 +12074,25 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20013;&#24515;&#20670;&#21521;&#12398;&#25351;&#27161;">&#20013;&#24515;&#20670;&#21521;&#12398;&#25351;&#27161;<a class="anchor-link" href="#&#20013;&#24515;&#20670;&#21521;&#12398;&#25351;&#27161;">&#182;</a></h2><h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
+  <tbody><tr>
+    <th style="text-align: left;">項目</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
+  </tr>
+   <tr>
+    <th style="text-align: left;">中央値</th>
+    <th style="text-align: left;">2017/11[7],2017/06[3]</th>
+    <th style="text-align: left;">50%</th>
+  </tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#25955;&#12425;&#12400;&#12426;&#12394;&#12393;&#12398;&#25351;&#27161;">&#25955;&#12425;&#12400;&#12426;&#12394;&#12393;&#12398;&#25351;&#27161;<a class="anchor-link" href="#&#25955;&#12425;&#12400;&#12426;&#12394;&#12393;&#12398;&#25351;&#27161;">&#182;</a></h2>
 </div>
 </div>
@@ -11947,16 +12101,45 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
+  <tbody><tr>
+    <th style="text-align: left;">項目</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">四分位範囲</th>
+    <th style="text-align: left;">2017/06[4]</th>
+    <th style="text-align: left;">25%</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">箱ひげ図</th>
+    <th style="text-align: left;">2018/11[2,3],2018/06[1],2017/11[8],2017/06[1,2]</th>
+    <th style="text-align: left;">100%</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">標準偏差</th>
+    <th style="text-align: left;">2018/06[2]</th>
+    <th style="text-align: left;">25%</th>
+  </tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#12525;&#12540;&#12524;&#12531;&#12484;&#26354;&#32218;">&#12525;&#12540;&#12524;&#12531;&#12484;&#26354;&#32218;<a class="anchor-link" href="#&#12525;&#12540;&#12524;&#12531;&#12484;&#26354;&#32218;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06[6,7,8]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/06[6,7,8]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -11974,23 +12157,23 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">意味</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">意味</th>
   </tr>
   <tr>
-    <th style="text-align:left;">ローレンツ曲線</th>
-    <th style="text-align:left;">累積相対値を縦軸に、累積相対度数を横軸にした折れ線グラフ</th>
+    <th style="text-align: left;">ローレンツ曲線</th>
+    <th style="text-align: left;">累積相対値を縦軸に、累積相対度数を横軸にした折れ線グラフ</th>
   </tr>
   <tr>
-    <th style="text-align:left;">完全平等線</th>
-    <th style="text-align:left;">対角線の直線。分配が完全に均等な場合、ローレンツ曲線は完全平等線に一致する</th>
+    <th style="text-align: left;">完全平等線</th>
+    <th style="text-align: left;">対角線の直線。分配が完全に均等な場合、ローレンツ曲線は完全平等線に一致する</th>
   </tr>
   <tr>
-    <th style="text-align:left;">ジニ係数</th>
-    <th style="text-align:left;">ローレンツ曲線と完全平等線とで囲まれた面積の2倍の値。分配が均等になるほど0に近付く</th>
+    <th style="text-align: left;">ジニ係数</th>
+    <th style="text-align: left;">ローレンツ曲線と完全平等線とで囲まれた面積の2倍の値。分配が均等になるほど0に近付く</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -11999,15 +12182,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27498;&#24230;&#12289;&#23574;&#24230;">&#27498;&#24230;&#12289;&#23574;&#24230;<a class="anchor-link" href="#&#27498;&#24230;&#12289;&#23574;&#24230;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[17,18,19]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/11[17,18,19]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12016,31 +12199,31 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">説明</th>
-    <th style="text-align:left;">正の場合</th>
-    <th style="text-align:left;">0の場合</th>
-    <th style="text-align:left;">負の場合</th>
-    <th width=320  style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">正の場合</th>
+    <th style="text-align: left;">0の場合</th>
+    <th style="text-align: left;">負の場合</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">歪度</th>
-    <th style="text-align:left;">分布の左右対称性を示す指標</th>
-    <th style="text-align:left;">右裾が長い</th>
-    <th style="text-align:left;">左右対称</th>
-    <th style="text-align:left;">左裾が長い</th>
-    <th style="text-align:left;font-size: 25px;">$\frac{{\mu _3 }}{{\sigma ^3 }}=\frac{E[(X-\mu)^3]}{{\sigma ^3 }}$</th>
+    <th style="text-align: left;">歪度</th>
+    <th style="text-align: left;">分布の左右対称性を示す指標</th>
+    <th style="text-align: left;">右裾が長い</th>
+    <th style="text-align: left;">左右対称</th>
+    <th style="text-align: left;">左裾が長い</th>
+    <th style="text-align: left; font-size: 25px;">$\frac{{\mu _3 }}{{\sigma ^3 }}=\frac{E[(X-\mu)^3]}{{\sigma ^3 }}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">尖度</th>
-    <th style="text-align:left;">分布の山の尖り度と裾の広がり度を示す指標</th>
-    <th style="text-align:left;">尖った分布</th>
-    <th style="text-align:left;">正規分布と同じ</th>
-    <th style="text-align:left;">扁平な分布</th>
-    <th style="text-align:left;font-size: 25px;">$\frac{{\mu _4 }}{{\sigma ^4 }}-3=\frac{{E[(X-\mu)^4]}}{{\sigma ^4 }}-3$</th>
+    <th style="text-align: left;">尖度</th>
+    <th style="text-align: left;">分布の山の尖り度と裾の広がり度を示す指標</th>
+    <th style="text-align: left;">尖った分布</th>
+    <th style="text-align: left;">正規分布と同じ</th>
+    <th style="text-align: left;">扁平な分布</th>
+    <th style="text-align: left; font-size: 25px;">$\frac{{\mu _4 }}{{\sigma ^4 }}-3=\frac{{E[(X-\mu)^4]}}{{\sigma ^4 }}-3$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12057,47 +12240,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">項目</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">項目</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">偏差</th>
-    <th style="text-align:left;">2018/06[1]</th>
-    <th style="text-align:left;">25%</th>
-  </tr>
-   <tr>
-    <th style="text-align:left;">中央値</th>
-    <th style="text-align:left;">2017/11[7]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">偏差</th>
+    <th style="text-align: left;">2018/06[1]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">標準得点(z得点)</th>
-    <th style="text-align:left;">2018/06[1]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">標準得点(z得点)</th>
+    <th style="text-align: left;">2018/06[1]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">変動係数</th>
-    <th style="text-align:left;">2018/06[4],2017/11[7]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">変動係数</th>
+    <th style="text-align: left;">2018/06[4],2017/11[7]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
-  <tr>
-    <th style="text-align:left;">箱ひげ図</th>
-    <th style="text-align:left;">2018/11[2,3],2018/06[1],2017/11[8],2017/06[1]</th>
-    <th style="text-align:left;">100%</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">ヒストグラム</th>
-    <th style="text-align:left;">2017/11[3,8],2017/06[2]</th>
-    <th style="text-align:left;">50%</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">標準偏差</th>
-    <th style="text-align:left;">2018/06[2]</th>
-    <th style="text-align:left;">25%</th>
-  </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12106,27 +12269,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">説明</th>
-    <th width=100 style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">偏差</th>
-    <th style="text-align:left;">平均値と測定値の差</th>
-    <th style="text-align:left;">$\large{\mu - x_{i}}$</th>
+    <th style="text-align: left;">偏差</th>
+    <th style="text-align: left;">平均値と測定値の差</th>
+    <th style="text-align: left;">$\large{\mu - x_{i}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">標準得点(z得点)</th>
-    <th style="text-align:left;">平均が0、標準偏差が1になるように変換した得点</th>
-    <th style="text-align:left;">$\LARGE{x_{i}-\mu \over \sigma }$</th>
+    <th style="text-align: left;">標準得点(z得点)</th>
+    <th style="text-align: left;">平均が0、標準偏差が1になるように変換した得点</th>
+    <th style="text-align: left;">$\LARGE{x_{i}-\mu \over \sigma }$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">変動係数</th>
-    <th style="text-align:left;">標準偏差を平均で割った値</th>
-    <th style="text-align:left;">$\LARGE{\sigma \over \mu }$</th>
+    <th style="text-align: left;">変動係数</th>
+    <th style="text-align: left;">標準偏差を平均で割った値</th>
+    <th style="text-align: left;">$\LARGE{\sigma \over \mu }$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12143,27 +12306,32 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">項目</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">項目</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">偏相関係数</th>
-    <th style="text-align:left;">2018/06[5],2017/06[9]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">相関係数</th>
+    <th style="text-align: left;">2017/06[9]</th>
+    <th style="text-align: left;">25%</th>
+  </tr>
+   <tr>
+    <th style="text-align: left;">偏相関係数</th>
+    <th style="text-align: left;">2018/06[5]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">擬相関(擬似相関)</th>
-    <th style="text-align:left;">2018/11[34],2018/06[5]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">擬相関(擬似相関)</th>
+    <th style="text-align: left;">2018/11[34],2018/06[5]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">相関係数とグラフの傾き</th>
-    <th style="text-align:left;">2018/11[4],2018/06[3],2017/11[4]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">相関係数とグラフの傾き</th>
+    <th style="text-align: left;">2018/11[4],2018/06[3],2017/11[4]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12172,22 +12340,22 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">説明</th>
-    <th width=300 style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">偏相関係数</th>
-    <th style="text-align:left;">2変数から第3の変数の影響を取り除いて求めた相関係数。<br>2変数の残差の相関係数からも求められる。</th>
-    <th style="text-align:left;">${\LARGE r_{xy\cdot z} = \frac{r_{xy} - r_{xz}r_{yz}} {\sqrt{1 - r_{xz}^2} \sqrt{1 - r_{yz}^2}}} $ <br> $ \LARGE{= r_{e1\cdot{e2}}}=\frac{\mathrm{Cov}(e_{1},e_{2})}{\sqrt{V(e_{1})V(e_{2})}} $</th>
+    <th style="text-align: left;">偏相関係数</th>
+    <th style="text-align: left;">2変数から第3の変数の影響を取り除いて求めた相関係数。<br>2変数の残差の相関係数からも求められる。</th>
+    <th style="text-align: left;">${\LARGE r_{xy\cdot z} = \frac{r_{xy} - r_{xz}r_{yz}} {\sqrt{1 - r_{xz}^2} \sqrt{1 - r_{yz}^2}}} $ <br> $ \LARGE{= r_{e1\cdot{e2}}}=\frac{\mathrm{Cov}(e_{1},e_{2})}{\sqrt{V(e_{1})V(e_{2})}} $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">擬相関<br>(擬似相関)</th>
-    <th style="text-align:left;">2つの事象に因果関係がないのに、見えない要因(潜伏変数)によって因果関係があるかのように推測される事</th>
-    <th style="text-align:center;">ー</th>
+    <th style="text-align: left;">擬相関<br>(擬似相関)</th>
+    <th style="text-align: left;">2つの事象に因果関係がないのに、見えない要因(潜伏変数)によって因果関係があるかのように推測される事</th>
+    <th style="text-align: center;">ー</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12220,32 +12388,32 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">説明</th>
-    <th style="text-align:left;">例</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">例</th>
   </tr>
   <tr>
-    <th style="text-align:left;">要因</th>
-    <th style="text-align:left;">データの値に変化を与える要素</th>
-    <th style="text-align:left;">算数のテストの場合、「組」、「その日の体調」、「気温」、「テスト時間」</th>
+    <th style="text-align: left;">要因</th>
+    <th style="text-align: left;">データの値に変化を与える要素</th>
+    <th style="text-align: left;">算数のテストの場合、「組」、「その日の体調」、「気温」、「テスト時間」</th>
   </tr>
   <tr>
-    <th style="text-align:left;">因子</th>
-    <th style="text-align:left;">母平均に差をもたらすと考えられる要因</th>
-    <th style="text-align:center;">－</th>
+    <th style="text-align: left;">因子</th>
+    <th style="text-align: left;">母平均に差をもたらすと考えられる要因</th>
+    <th style="text-align: center;">－</th>
   </tr>
   <tr>
-    <th style="text-align:left;">水準</th>
-    <th style="text-align:left;">1つの要因に含まれる項目</th>
-    <th style="text-align:left;">「組」の水準は「1組、2組、3組」の3つであり、水準数は「3」</th>
+    <th style="text-align: left;">水準</th>
+    <th style="text-align: left;">1つの要因に含まれる項目</th>
+    <th style="text-align: left;">「組」の水準は「1組、2組、3組」の3つであり、水準数は「3」</th>
   </tr>
   <tr>
-    <th style="text-align:left;">◯元配置</th>
-    <th style="text-align:left;">データに含まれる因子の数</th>
-    <th style="text-align:left;">1組、2組、3組の場合、含まれる因子の数は「組」のみなので「一元配置」</th>
+    <th style="text-align: left;">◯元配置</th>
+    <th style="text-align: left;">データに含まれる因子の数</th>
+    <th style="text-align: left;">1組、2組、3組の場合、含まれる因子の数は「組」のみなので「一元配置」</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12263,27 +12431,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th width="110" style="text-align:left;">分散分析の種類</th>
-    <th width="450" style="text-align:left;">説明</th>
-    <th style="text-align:left;">例</th>
+  <tbody><tr>
+    <th style="text-align: left;">分散分析の種類</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">例</th>
   </tr>
   <tr>
-    <th style="text-align:left;">一元配置分散分析</th>
-    <th style="text-align:left;">1つの因子からなるデータを分析。<br>因子に含まれる水準間の平均値の差を見る。</th>
-    <th style="text-align:left;">ある学校の1組、2組、3組の算数のテストのデータがある場合、<br>各組の平均点に差があるか検定する。</th>
+    <th style="text-align: left;">一元配置分散分析</th>
+    <th style="text-align: left;">1つの因子からなるデータを分析。<br>因子に含まれる水準間の平均値の差を見る。</th>
+    <th style="text-align: left;">ある学校の1組、2組、3組の算数のテストのデータがある場合、<br>各組の平均点に差があるか検定する。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">二元配置分散分析</th>
-    <th style="text-align:left;">2つの因子からなるデータを分析。各因子における水準間の平均値の差を見る。<br>各因子の相乗効果の有無の見る。</th>
-    <th style="text-align:left;">薬A、B、Cをそれぞれ10mg、20mg投与した場合の効果についてのデータがある場合、薬の種類や投与量によって得られる平均値に差があるか検定</th>
+    <th style="text-align: left;">二元配置分散分析</th>
+    <th style="text-align: left;">2つの因子からなるデータを分析。各因子における水準間の平均値の差を見る。<br>各因子の相乗効果の有無の見る。</th>
+    <th style="text-align: left;">薬A、B、Cをそれぞれ10mg、20mg投与した場合の効果についてのデータがある場合、薬の種類や投与量によって得られる平均値に差があるか検定</th>
   </tr>
   <tr>
-    <th style="text-align:left;">多元配置分散分析</th>
-    <th style="text-align:left;">3つ以上の因子からなるデータを分析する方法</th>
-    <th style="text-align:center;">－</th>
+    <th style="text-align: left;">多元配置分散分析</th>
+    <th style="text-align: left;">3つ以上の因子からなるデータを分析する方法</th>
+    <th style="text-align: center;">－</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12292,15 +12460,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#20803;&#37197;&#32622;&#20998;&#25955;&#20998;&#26512;&#34920;">&#19968;&#20803;&#37197;&#32622;&#20998;&#25955;&#20998;&#26512;&#34920;<a class="anchor-link" href="#&#19968;&#20803;&#37197;&#32622;&#20998;&#25955;&#20998;&#26512;&#34920;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06[25],2017/11[33,34],2017/06[30,31,32]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">2018/06[25],2017/11[33,34],2017/06[30,31,32]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12309,35 +12477,44 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">因子</th>
-    <th style="text-align:left;">平方和</th>
-    <th style="text-align:left;">自由度</th>
-    <th style="text-align:left;">平均平方</th>
-    <th style="text-align:left;">F値</th>
+  <tbody><tr>
+    <th style="text-align: left;">因子</th>
+    <th style="text-align: left;">平方和</th>
+    <th style="text-align: left;">自由度</th>
+    <th style="text-align: left;">平均平方</th>
+    <th style="text-align: left;">F値</th>
   </tr>
   <tr>
-    <th style="text-align:left;">要因</th>
-    <th style="text-align:left;">[全体の平均値]-[因子各水準の平均値]</th>
-    <th style="text-align:left;">[因子水準の個数]-1</th>
-    <th style="text-align:left;">$$\frac{要因の平方和}{要因の自由度}$$</th>
-    <th style="text-align:left;">$$\frac{要因の平方和}{残差の平方和}$$</th>
+    <th style="text-align: left;">要因</th>
+    <th style="text-align: left;">[全体の平均値]-[因子各水準の平均値]</th>
+    <th style="text-align: left;">[因子水準の個数]-1</th>
+    <th style="text-align: left;">$$\frac{要因の平方和}{要因の自由度}$$</th>
+    <th style="text-align: left;">$$\frac{要因の平方和}{残差の平方和}$$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">残差</th>
-    <th style="text-align:left;">[因子各水準の平均値]-[各データ]</th>
-    <th style="text-align:left;">[全体の自由度]-[要因の自由度]</th>
-    <th style="text-align:left;">$$\frac{残差の平方和}{残差の自由度}$$</th>
-    <th style="text-align:left;">なし</th>
+    <th style="text-align: left;">残差</th>
+    <th style="text-align: left;">[因子各水準の平均値]-[各データ]</th>
+    <th style="text-align: left;">[全体の自由度]-[因子水準の個数]</th>
+    <th style="text-align: left;">$$\frac{残差の平方和}{残差の自由度}$$</th>
+    <th style="text-align: left;">なし</th>
   </tr>
   <tr>
-    <th style="text-align:left;">全体</th>
-    <th style="text-align:left;">[データ全体の平均値]-[各データ]</th>
-    <th style="text-align:left;">[全体の自由度]-1</th>
-    <th style="text-align:left;">なし</th>
-    <th style="text-align:left;">なし</th>
+    <th style="text-align: left;">全体</th>
+    <th style="text-align: left;">[データ全体の平均値]-[各データ]</th>
+    <th style="text-align: left;">[全体の自由度]-1</th>
+    <th style="text-align: left;">なし</th>
+    <th style="text-align: left;">なし</th>
   </tr>
-</table>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>F値が有意水準より小さいと帰無仮説「全ての水準間で母平均は等しい」は棄却される。</p>
+
 </div>
 </div>
 </div>
@@ -12354,22 +12531,22 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">変化率</th>
-    <th style="text-align:left;">2018/11[5],2018/06[9,10],2017/11[11],2017/06[6,7]</th>
-    <th style="text-align:left;">100%</th>
+    <th style="text-align: left;">変化率<br>(成長率)</th>
+    <th style="text-align: left;">2018/11[5],2018/06[9,10],2017/11[11],2017/06[6,7]</th>
+    <th style="text-align: left;">100%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">移動平均</th>
-    <th style="text-align:left;">2018/11[6]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">移動平均</th>
+    <th style="text-align: left;">2018/11[6]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12378,22 +12555,22 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">説明</th>
-    <th width=550 style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">変化率<br>(成長率)</th>
-    <th style="text-align:left;">前時点での値に対する、ある時点と前時点との値の差の割合</th>
-    <th width=300 style="text-align:left;">（ある時点の値 ー 前時点の値）÷（前時点の値）</th>
+    <th style="text-align: left;">変化率<br>(成長率)</th>
+    <th style="text-align: left;">前時点での値に対する、ある時点と前時点との値の差の割合</th>
+    <th style="text-align: left;">（ある時点の値 ー 前時点の値）÷（前時点の値）</th>
   </tr>
   <tr>
-    <th style="text-align:left;">移動平均</th>
-    <th style="text-align:left;">一定区間毎の平均値を区間をずらしながら求める値</th>
-    <th width=300 style="text-align:left;">区間が奇数の場合(3移動平均)：$\LARGE{\bar{x}_9 = \frac{x_{8} + x_{9} +x_{10}}{3}}$<br><br><br>区間が偶数の場合(4移動平均)：$\LARGE{\bar{x}_9 = \frac{\frac{x_{7}+x_{8} + x_{9} +x_{10}}{4} + \frac{x_{8}+x_{9} + x_{10} +x_{11}}{4}}{2}}$</th>
+    <th style="text-align: left;">移動平均</th>
+    <th style="text-align: left;">一定区間毎の平均値を区間をずらしながら求める値</th>
+    <th style="text-align: left;">区間が奇数の場合(3移動平均)：$\LARGE{\bar{x}_9 = \frac{x_{8} + x_{9} +x_{10}}{3}}$<br><br><br>区間が偶数の場合(4移動平均)：$\LARGE{\bar{x}_9 = \frac{\frac{x_{7}+x_{8} + x_{9} +x_{10}}{4} + \frac{x_{8}+x_{9} + x_{10} +x_{11}}{4}}{2}}$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12402,27 +12579,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#20385;&#26684;&#25351;&#25968;">&#20385;&#26684;&#25351;&#25968;<a class="anchor-link" href="#&#20385;&#26684;&#25351;&#25968;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">ラスパイレス指数</th>
-    <th style="text-align:left;">2018/11[7],2017/11[10]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">ラスパイレス指数</th>
+    <th style="text-align: left;">2018/11[7],2017/11[10]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">パーシェ指数</th>
-    <th style="text-align:left;"></th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">パーシェ指数</th>
+    <th style="text-align: left;"></th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">フィッシャー指数</th>
-    <th style="text-align:left;"></th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">フィッシャー指数</th>
+    <th style="text-align: left;"></th>
+    <th style="text-align: left;"></th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12431,27 +12608,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">記号</th>
-    <th style="text-align:left;">意味</th>
+  <tbody><tr>
+    <th style="text-align: left;">記号</th>
+    <th style="text-align: left;">意味</th>
   </tr>
   <tr>
-    <th style="text-align:left;font-size: 20px; ">$p_{0i}$</th>
-    <th style="text-align:left;">基準年の価格</th>
+    <th style="text-align: left; font-size: 20px;">$p_{0i}$</th>
+    <th style="text-align: left;">基準年の価格</th>
   </tr>
   <tr>
-    <th style="text-align:left;font-size: 20px; ">$q_{0i}$</th>
-    <th style="text-align:left;">基準年の数量</th>
+    <th style="text-align: left; font-size: 20px;">$q_{0i}$</th>
+    <th style="text-align: left;">基準年の数量</th>
   </tr>
   <tr>
-    <th style="text-align:left;font-size: 20px; ">$p_{ti}$</th>
-    <th style="text-align:left;">比較年の価格</th>
+    <th style="text-align: left; font-size: 20px;">$p_{ti}$</th>
+    <th style="text-align: left;">比較年の価格</th>
   </tr>
   <tr>
-    <th style="text-align:left;font-size: 20px; ">$q_{ti}$</th>
-    <th style="text-align:left;">比較年の数量</th>
+    <th style="text-align: left; font-size: 20px;">$q_{ti}$</th>
+    <th style="text-align: left;">比較年の数量</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12459,28 +12636,28 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><table>
-  <tr>
-    <th style="text-align:left;">指数名</th>
-    <th style="text-align:left;">説明</th>
-    <th width=200 style="text-align:left;">公式</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">ラスパイレス指数</th>
-    <th style="text-align:left;">基準年の数量で価格を比較</th>
-    <th style="text-align:left;font-size: 15px; ">$P_L= \frac{\displaystyle \sum^{n}_{i=1}p_{ti}q_{0i}}{\displaystyle \sum^{n}_{i=1}p_{0i}q_{0i}} \times 100 $</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">パーシェ指数</th>
-    <th style="text-align:left;">比較年の数量で価格を比較</th>
-    <th style="text-align:left;font-size: 15px; ">$P_P= \frac{\displaystyle \sum^{n}_{i=1}p_{ti}q_{ti}}{\displaystyle \sum^{n}_{i=1}p_{0i}q_{ti}} \times 100 $</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">フィッシャー指数</th>
-    <th style="text-align:left;">ラスパイレス指数とパーシェ指数の幾何平均</th>
-    <th style="text-align:left;font-size: 15px; ">$\displaystyle \sqrt{P_L \times P_P} $</th>
-  </tr></p>
 <table>
+  <tbody><tr>
+    <th style="text-align: left;">指数名</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">公式</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">ラスパイレス指数</th>
+    <th style="text-align: left;">基準年の数量で価格を比較</th>
+    <th style="text-align: left; font-size: 15px;">$P_L= \frac{\displaystyle \sum^{n}_{i=1}p_{ti}q_{0i}}{\displaystyle \sum^{n}_{i=1}p_{0i}q_{0i}} \times 100 $</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">パーシェ指数</th>
+    <th style="text-align: left;">比較年の数量で価格を比較</th>
+    <th style="text-align: left; font-size: 15px;">$P_P= \frac{\displaystyle \sum^{n}_{i=1}p_{ti}q_{ti}}{\displaystyle \sum^{n}_{i=1}p_{0i}q_{ti}} \times 100 $</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">フィッシャー指数</th>
+    <th style="text-align: left;">ラスパイレス指数とパーシェ指数の幾何平均</th>
+    <th style="text-align: left; font-size: 15px;">$\displaystyle \sqrt{P_L \times P_P} $</th>
+  </tr>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12489,15 +12666,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#12467;&#12524;&#12525;&#12464;&#12521;&#12512;(&#33258;&#24049;&#30456;&#38306;)">&#12467;&#12524;&#12525;&#12464;&#12521;&#12512;(&#33258;&#24049;&#30456;&#38306;)<a class="anchor-link" href="#&#12467;&#12524;&#12525;&#12464;&#12521;&#12512;(&#33258;&#24049;&#30456;&#38306;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2017/11[9],2017/06[8]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">2017/11[9],2017/06[8]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12540,15 +12717,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2017/11[13]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2017/11[13]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12557,19 +12734,19 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">実験研究</th>
-    <th style="text-align:left;">研究対象に介入(投薬など)を行う</th>
+    <th style="text-align: left;">実験研究</th>
+    <th style="text-align: left;">研究対象に介入(投薬など)を行う</th>
   </tr>
   <tr>
-    <th style="text-align:left;">観察研究</th>
-    <th style="text-align:left;">研究対象に介入を行わず、対象の状態を観察する</th>
+    <th style="text-align: left;">観察研究</th>
+    <th style="text-align: left;">研究対象に介入を行わず、対象の状態を観察する</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12586,17 +12763,17 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
    <tr>
-    <th style="text-align:left;">標準誤差</th>
-    <th style="text-align:left;">2017/06[24]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">標準誤差</th>
+    <th style="text-align: left;">2017/06[24]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12605,15 +12782,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th  width="200"  style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">公式</th>
   </tr>
    <tr>
-    <th style="text-align:left;">標準誤差</th>
-    <th style="text-align:left;">$\LARGE{se=\sqrt\frac{σ^2}{n}=\frac{σ}{\sqrt{n}}}$</th>
+    <th style="text-align: left;">標準誤差</th>
+    <th style="text-align: left;">$\LARGE{se=\sqrt\frac{σ^2}{n}=\frac{σ}{\sqrt{n}}}$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12622,15 +12799,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#25277;&#20986;&#27861;">&#25277;&#20986;&#27861;<a class="anchor-link" href="#&#25277;&#20986;&#27861;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
    <tr>
-    <th style="text-align:left;">2018/11[8,9],2018/06[12],2017/11[12],2016/11[10]</th>
-    <th style="text-align:left;">100%</th>
+    <th style="text-align: left;">2018/11[8,9],2018/06[12],2017/11[12],2017/06[12],2016/11[10]</th>
+    <th style="text-align: left;">100%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12638,51 +12815,50 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><table >
-  <tr>
-    <th  width="110" style="text-align:left;">名前</th>
-    <th style="text-align:left;">説明</th>
-    <th style="text-align:left;">メリット</th>
-    <th style="text-align:left;">デメリット</th>
+<table>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">説明</th>
+    <th style="text-align: left;">メリット</th>
+    <th style="text-align: left;">デメリット</th>
   </tr>
   <tr>
-    <th style="text-align:left;">単純無作為抽出法</th>
-    <th style="text-align:left;">母集団から、乱数表を用いて必要数だけサンプルを抽出</th>
-    <th style="text-align:left;">簡単に標本抽出が可能</th>
-    <th style="text-align:left;">たまたま偏りを持った標本が抽出される可能性がある</th>
+    <th style="text-align: left;">単純無作為抽出法</th>
+    <th style="text-align: left;">母集団から、乱数表を用いて必要数だけサンプルを抽出</th>
+    <th style="text-align: left;">簡単に標本抽出が可能</th>
+    <th style="text-align: left;">たまたま偏りを持った標本が抽出される可能性がある</th>
   </tr>
   <tr>
-    <th style="text-align:left;">層化抽出法</th>
-    <th style="text-align:left;">母集団をいくつかの層に分けておき、各層の中から必要な数の調査対象を無作為に抽出</th>
-    <th style="text-align:left;">母集団内情報（年齢別,性別）の比較を行える母集団の推測の精度が増す</th>
-    <th style="text-align:left;">母集団の構成情報を事前に知っておく必要がある</th>
+    <th style="text-align: left;">層化抽出法</th>
+    <th style="text-align: left;">母集団をいくつかの層に分けておき、各層の中から必要な数の調査対象を無作為に抽出</th>
+    <th style="text-align: left;">母集団内情報（年齢別,性別）の比較を行える母集団の推測の精度が増す</th>
+    <th style="text-align: left;">母集団の構成情報を事前に知っておく必要がある</th>
   </tr>
   <tr>
-    <th style="text-align:left;">比例抽出法</th>
-    <th style="text-align:left;">層化抽出法で標本の大きさに比例させて調査対象を抽出する</th>
-    <th style="text-align:left;">同上</th>
-    <th style="text-align:left;">同上</th>
+    <th style="text-align: left;">比例抽出法</th>
+    <th style="text-align: left;">層化抽出法で標本の大きさに比例させて調査対象を抽出する</th>
+    <th style="text-align: left;">同上</th>
+    <th style="text-align: left;">同上</th>
   </tr>
   <tr>
-    <th style="text-align:left;">クラスター抽出法</th>
-    <th style="text-align:left;">クラスターに分割し、無作為にクラスターを選択し、選択したクラスターの全個体を標本とする</th>
-    <th style="text-align:left;">作業コストを抑えられる</th>
-    <th style="text-align:left;">同じクラスターに属する個体は似た傾向を持つことが多く標本が偏りを持ちやすい</th>
+    <th style="text-align: left;">クラスター抽出法</th>
+    <th style="text-align: left;">クラスターに分割し、無作為にクラスターを選択し、選択したクラスターの全個体を標本とする</th>
+    <th style="text-align: left;">作業コストを抑えられる</th>
+    <th style="text-align: left;">同じクラスターに属する個体は似た傾向を持つことが多く標本が偏りを持ちやすい</th>
   </tr>
   <tr>
-    <th style="text-align:left;">多段(二段)抽出法</th>
-    <th style="text-align:left;">母集団をいくつかのグループに分け、そこから無作為抽出でいくつかグループを選び、さらにその中から無作為抽出でいくつかのグループを選び・・・を繰り返し最終的に選ばれたグループの中から無作為抽出</th>
-    <th style="text-align:left;">コストを低く抑えられる、抽出効率が高い</th>
-    <th style="text-align:left;">サンプルサイズが小さい場合、標本に偏りが生じる可能性がある</th>
+    <th style="text-align: left;">多段(二段)抽出法</th>
+    <th style="text-align: left;">母集団をいくつかのグループに分け、そこから無作為抽出でいくつかグループを選び、さらにその中から無作為抽出でいくつかのグループを選び・・・を繰り返し最終的に選ばれたグループの中から無作為抽出</th>
+    <th style="text-align: left;">コストを低く抑えられる、抽出効率が高い</th>
+    <th style="text-align: left;">サンプルサイズが小さい場合、標本に偏りが生じる可能性がある</th>
   </tr>
   <tr>
-    <th style="text-align:left;">系統抽出法</th>
-    <th style="text-align:left;">通し番号をつけた名簿を作成し、1番目の調査対象を無作為に選び、2番目以降の調査対象を一定の間隔で抽出</th>
-    <th style="text-align:left;">単純無作為抽出より手間や時間やコストが掛からない</th>
-    <th style="text-align:left;">名簿の並び順に何らかの周期があると標本に偏りが生じる可能性がある</th>
+    <th style="text-align: left;">系統抽出法</th>
+    <th style="text-align: left;">通し番号をつけた名簿を作成し、1番目の調査対象を無作為に選び、2番目以降の調査対象を一定の間隔で抽出</th>
+    <th style="text-align: left;">単純無作為抽出より手間や時間やコストが掛からない</th>
+    <th style="text-align: left;">名簿の並び順に何らかの周期があると標本に偏りが生じる可能性がある</th>
   </tr>
-</table></p>
-
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12699,15 +12875,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#12501;&#12451;&#12483;&#12471;&#12515;&#12540;&#12398;3&#21407;&#21063;">&#12501;&#12451;&#12483;&#12471;&#12515;&#12540;&#12398;3&#21407;&#21063;<a class="anchor-link" href="#&#12501;&#12451;&#12483;&#12471;&#12515;&#12540;&#12398;3&#21407;&#21063;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06[11]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/06[11]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12716,23 +12892,23 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">原則名</th>
-    <th style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">原則名</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">反復</th>
-    <th style="text-align:left;">同じ条件で2回以上の繰り返し実験する事。1回の測定値に違いは、偶然誤差なのか判断できないため。反復によって偶然誤差の大きさを評価する。</th>
+    <th style="text-align: left;">反復</th>
+    <th style="text-align: left;">同じ条件で2回以上の繰り返し実験する事。1回の測定値に違いは、偶然誤差なのか判断できないため。反復によって偶然誤差の大きさを評価する。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">無作為化</th>
-    <th style="text-align:left;">実験の順序や場所などが複数ある場合に、比較したい処理群を無作為に割り付ける。系統誤差を偶然誤差に取り込む。</th>
+    <th style="text-align: left;">無作為化</th>
+    <th style="text-align: left;">実験の順序や場所などが複数ある場合に、比較したい処理群を無作為に割り付ける。系統誤差を偶然誤差に取り込む。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">局所管理</th>
-    <th style="text-align:left;">実験を行う時間や場所を区切って、ブロック内でできるだけ均一になるように管理すること。系統誤差を小さくすることができる。</th>
+    <th style="text-align: left;">局所管理</th>
+    <th style="text-align: left;">実験を行う時間や場所を区切って、ブロック内でできるだけ均一になるように管理すること。系統誤差を小さくすることができる。</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12757,14 +12933,14 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
-    <th style="text-align:left;">2018/11[10,11],2018/06[13,14],2017/11[14],2017/06[14,15,16]</th>
-    <th style="text-align:left;">100%</th>
+    <tr><th style="text-align: left;">2018/11[10,11],2018/06[13,14],2017/11[14],2017/06[14,15,16]</th>
+    <th style="text-align: left;">100%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12773,35 +12949,35 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th width="120"  style="text-align:left;">定理名</th>
-    <th width="400"  style="text-align:center;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">定理名</th>
+    <th style="text-align: center;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">加法定理</th>
-    <th style="text-align:left;font-size: 15px; ">$ P(A\cup B)=P(A)+P(B)-P(A\cap B) $</th>
+    <th style="text-align: left;">加法定理</th>
+    <th style="text-align: left; font-size: 15px;">$ P(A\cup B)=P(A)+P(B)-P(A\cap B) $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">条件付き確率</th>
-    <th style="text-align:left;font-size: 15px;">$ P(B|A)={\large\frac{P(A \cap B)}{P(A)}}$</th>
+    <th style="text-align: left;">条件付き確率</th>
+    <th style="text-align: left; font-size: 15px;">$ P(B|A)={\large\frac{P(A \cap B)}{P(A)}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">乗法定理</th>
-    <th style="text-align:left;font-size: 15px;">$ P(A \cap B)={P(B)}\cdot{P(A|B)} = P(A)\cdot{P(B|A)} $</th>
+    <th style="text-align: left;">乗法定理</th>
+    <th style="text-align: left; font-size: 15px;">$ P(A \cap B)={P(B)}\cdot{P(A|B)} = P(A)\cdot{P(B|A)} $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">ベイズの定理</th>
-    <th style="text-align:left;font-size: 15px;">$ P(B|A)={\large\frac{P(B)\cdot P(A|B)}{P(A)}  }$</th>
+    <th style="text-align: left;">ベイズの定理</th>
+    <th style="text-align: left; font-size: 15px;">$ P(B|A)={\large\frac{P(B)\cdot P(A|B)}{P(A)}  }$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">ベイズの定理(離散)</th>
-    <th style="text-align:left;font-size: 15px;">$ P(B_i|A)={\large\frac{P(B_i)\cdot P(A|B_i)}{\sum P(B_j)\cdot P(A|B_j)}  }$ </th>
+    <th style="text-align: left;">ベイズの定理(離散)</th>
+    <th style="text-align: left; font-size: 15px;">$ P(B_i|A)={\large\frac{P(B_i)\cdot P(A|B_i)}{\sum P(B_j)\cdot P(A|B_j)}  }$ </th>
   </tr>
    <tr>
-    <th style="text-align:left;">ベイズの定理(連続)</th>
-    <th style="text-align:left;font-size: 15px;">$P(B|A) = {\large\frac{P(B)\cdot P(A|B)}{P(B)\cdot P(A|B) + P(B^c)\cdot P(A|B^c)}}$<br> <br> $P(B)$：事前確率、$P(B|A)$：事後確率、$P(A|B)$：尤度</th>
+    <th style="text-align: left;">ベイズの定理(連続)</th>
+    <th style="text-align: left; font-size: 15px;">$P(B|A) = {\large\frac{P(B)\cdot P(A|B)}{P(B)\cdot P(A|B) + P(B^c)\cdot P(A|B^c)}}$<br> <br> $P(B)$：事前確率、$P(B|A)$：事後確率、$P(A|B)$：尤度</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12810,15 +12986,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#30906;&#29575;&#22793;&#25968;">&#30906;&#29575;&#22793;&#25968;<a class="anchor-link" href="#&#30906;&#29575;&#22793;&#25968;">&#182;</a></h2><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06[18,19],2017/11[16,21],2017/06/[19,20]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">2018/06[18,19],2017/11[16,21],2017/06/[19,20]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12827,27 +13003,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">公式名</th>
-    <th width="600" style="text-align:center;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">公式名</th>
+    <th style="text-align: center;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">分散</th>
-    <th style="text-align:left;font-size: 15px; ">$V(X) = \frac{1}{n}{\sum^{n}_{i=1}(x_i-{\overline{x}} )^2}={E}\left[\left[X-{E}\left(X\right)\right]^2\right]=E(X^2)-2{E(X)}^2+{E(X)}^2=E(X^2)-{E(X)}^2$</th>
+    <th style="text-align: left;">分散</th>
+    <th style="text-align: left; font-size: 15px;">$V(X) = \frac{1}{n}{\sum^{n}_{i=1}(x_i-{\overline{x}} )^2}={E}\left[\left[X-{E}\left(X\right)\right]^2\right]=E(X^2)-2{E(X)}^2+{E(X)}^2=E(X^2)-{E(X)}^2$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">標準偏差</th>
-    <th style="text-align:left;font-size: 15px; ">$\sigma = \sqrt{V(X)}$</th>
+    <th style="text-align: left;">標準偏差</th>
+    <th style="text-align: left; font-size: 15px;">$\sigma = \sqrt{V(X)}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">共分散 </th>
-    <th style="text-align:left;font-size: 15px; ">$ Cov(X,Y) = \frac{1}{n}\sum_{i = 1}^n {(x_i - \overline{x})(y_i - \overline{y})}$</th>
+    <th style="text-align: left;">共分散 </th>
+    <th style="text-align: left; font-size: 15px;">$ Cov(X,Y) = \frac{1}{n}\sum_{i = 1}^n {(x_i - \overline{x})(y_i - \overline{y})}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">相関係数</th>
-    <th style="text-align:left;font-size: 20px; ">$ r_{XY} = \frac{\mathrm{Cov}(X,Y)}{\sqrt{V(X)V(Y)}} $</th>
+    <th style="text-align: left;">相関係数</th>
+    <th style="text-align: left; font-size: 20px;">$ r_{XY} = \frac{\mathrm{Cov}(X,Y)}{\sqrt{V(X)V(Y)}} $</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12856,15 +13032,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">期待値の性質</th>
-    <th width="310" style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">期待値の性質</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">一般的性質</th>
-    <th style="text-align:left;font-size: 15px; ">$ E(cX+dY+t) = cE(X) + dE(Y) +t $</th>
+    <th style="text-align: left;">一般的性質</th>
+    <th style="text-align: left; font-size: 15px;">$ E(cX+dY+t) = cE(X) + dE(Y) +t $</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12873,27 +13049,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">分散の性質</th>
-    <th  width="600" style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">分散の性質</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">和の分散</th>
-    <th style="text-align:left;font-size: 15px; ">$V(X \pm Y ) = V(X)+V(Y) \pm 2\mathrm{Cov}(X,Y)$</th>
+    <th style="text-align: left;">和の分散</th>
+    <th style="text-align: left; font-size: 15px;">$V(X \pm Y ) = V(X)+V(Y) \pm 2\mathrm{Cov}(X,Y)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">和の分散(3つの場合)</th>
-    <th style="text-align:left;font-size: 15px; ">$V(X_1 + X_2 + X_3) $<br>$= V(X_1)+V(X_2)+V(X_3) + 2\mathrm{Cov}(X_1,X_2)+ 2\mathrm{Cov}(X_2,X_3)+ 2\mathrm{Cov}(X_1,X_3)$</th>
+    <th style="text-align: left;">和の分散(3つの場合)</th>
+    <th style="text-align: left; font-size: 15px;">$V(X_1 + X_2 + X_3) $<br>$= V(X_1)+V(X_2)+V(X_3) + 2\mathrm{Cov}(X_1,X_2)+ 2\mathrm{Cov}(X_2,X_3)+ 2\mathrm{Cov}(X_1,X_3)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">分散の一般的性質</th>
-    <th style="text-align:left;font-size: 15px; ">$V(cX+dY+t) = c^2V(X)+d^2V(Y)+2cd\mathrm{Cov}(X,Y)$</th>
+    <th style="text-align: left;">分散の一般的性質</th>
+    <th style="text-align: left; font-size: 15px;">$V(cX+dY+t) = c^2V(X)+d^2V(Y)+2cd\mathrm{Cov}(X,Y)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">分散と期待値および二乗期待値の関係</th>
-    <th style="text-align:left;font-size: 15px; ">$V(X) ={E}\left(\left(X-\mu \right)^2\right) = E(X^2)-2\mu{E}(x)+\mu^2 = E(X^2)-E(X)^2$</th>
+    <th style="text-align: left;">分散と期待値および二乗期待値の関係</th>
+    <th style="text-align: left; font-size: 15px;">$V(X) ={E}\left(\left(X-\mu \right)^2\right) = E(X^2)-2\mu{E}(x)+\mu^2 = E(X^2)-E(X)^2$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12902,31 +13078,31 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">共分散の性質</th>
-    <th  width="600" style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">共分散の性質</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">共分散と期待値の関係 </th>
-    <th style="text-align:left;font-size: 15px; ">$ \mathrm{Cov}(X,Y)=E[ (X-\overline{X})(Y-\overline{Y}) ]=E(XY)-E(X){E(Y)} $</th>
+    <th style="text-align: left;">共分散と期待値の関係 </th>
+    <th style="text-align: left; font-size: 15px;">$ \mathrm{Cov}(X,Y)=E[ (X-\overline{X})(Y-\overline{Y}) ]=E(XY)-E(X){E(Y)} $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">共分散の加法性①</th>
-    <th style="text-align:left;font-size: 15px; ">$Cov(X+Y,Z)$<br>$=E[(X+Y)Z]-E(X+Y)E(Z)$<br>$=[E(XZ)-E(X)E(Z)] + [E(YZ)-E(Y)E(Z)]$<br>$=Cov(X,Z)+Cov(Y,Z)$</th>
+    <th style="text-align: left;">共分散の加法性①</th>
+    <th style="text-align: left; font-size: 15px;">$Cov(X+Y,Z)$<br>$=E[(X+Y)Z]-E(X+Y)E(Z)$<br>$=[E(XZ)-E(X)E(Z)] + [E(YZ)-E(Y)E(Z)]$<br>$=Cov(X,Z)+Cov(Y,Z)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">共分散の加法性②</th>
-    <th style="text-align:left;font-size: 15px; ">$Cov(X-Y,Z)$<br>$=E[(X-Y)Z]-E(X-Y)E(Z)$<br>$=[E(XZ)-E(X)E(Z)] + [-E(YZ)+E(Y)E(Z)]$<br>$=[E(XZ)-E(X)E(Z)] - [E(YZ)-E(Y)E(Z)]$<br>$=Cov(X,Z)-Cov(Y,Z)$</th>
+    <th style="text-align: left;">共分散の加法性②</th>
+    <th style="text-align: left; font-size: 15px;">$Cov(X-Y,Z)$<br>$=E[(X-Y)Z]-E(X-Y)E(Z)$<br>$=[E(XZ)-E(X)E(Z)] + [-E(YZ)+E(Y)E(Z)]$<br>$=[E(XZ)-E(X)E(Z)] - [E(YZ)-E(Y)E(Z)]$<br>$=Cov(X,Z)-Cov(Y,Z)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">共分散の定数倍  </th>
-    <th style="text-align:left;font-size: 15px; ">$Cov(cX,Y)=E(cXY)-E(cX)E(Y)=cCov(X,Y)$</th>
+    <th style="text-align: left;">共分散の定数倍  </th>
+    <th style="text-align: left; font-size: 15px;">$Cov(cX,Y)=E(cXY)-E(cX)E(Y)=cCov(X,Y)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">同じ確率変数の共分散 </th>
-    <th style="text-align:left;font-size: 15px; ">$Cov(X,X)=\frac{1}{n}\sum_{i = 1}^n {(x_i - \overline{x})(x_i - \overline{x})}=V(X)$</th>
+    <th style="text-align: left;">同じ確率変数の共分散 </th>
+    <th style="text-align: left; font-size: 15px;">$Cov(X,X)=\frac{1}{n}\sum_{i = 1}^n {(x_i - \overline{x})(x_i - \overline{x})}=V(X)$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12935,27 +13111,27 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">独立な確率変数の性質</th>
-    <th  width="230" style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">独立な確率変数の性質</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">期待値(平均)</th>
-    <th style="text-align:left;font-size: 15px; ">$E(XY)=E(X)E(Y)$</th>
+    <th style="text-align: left;">期待値(平均)</th>
+    <th style="text-align: left; font-size: 15px;">$E(XY)=E(X)E(Y)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">分散</th>
-    <th style="text-align:left;font-size: 15px; ">$V(X\pm Y) = V(X)+V(Y)$</th>
+    <th style="text-align: left;">分散</th>
+    <th style="text-align: left; font-size: 15px;">$V(X\pm Y) = V(X)+V(Y)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">共分散</th>
-    <th style="text-align:left;font-size: 15px; ">$\mathrm{Cov}(X,Y) = 0$</th>
+    <th style="text-align: left;">共分散</th>
+    <th style="text-align: left; font-size: 15px;">$\mathrm{Cov}(X,Y) = 0$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">相関係数</th>
-    <th style="text-align:left;font-size: 15px; ">$r_{XY} = 0 $</th>
+    <th style="text-align: left;">相関係数</th>
+    <th style="text-align: left; font-size: 15px;">$r_{XY} = 0 $</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12964,17 +13140,17 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#30906;&#29575;&#23494;&#24230;&#38306;&#25968;&#12392;&#30906;&#29575;&#36074;&#37327;&#38306;&#25968;-(&#36899;&#32154;&#12392;&#38626;&#25955;)">&#30906;&#29575;&#23494;&#24230;&#38306;&#25968;&#12392;&#30906;&#29575;&#36074;&#37327;&#38306;&#25968; (&#36899;&#32154;&#12392;&#38626;&#25955;)<a class="anchor-link" href="#&#30906;&#29575;&#23494;&#24230;&#38306;&#25968;&#12392;&#30906;&#29575;&#36074;&#37327;&#38306;&#25968;-(&#36899;&#32154;&#12392;&#38626;&#25955;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">関数名</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">関数名</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">確率密度関数</th>
-    <th style="text-align:left;">2017/11[15,16]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">確率密度関数</th>
+    <th style="text-align: left;">2017/11[15,16]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -12983,31 +13159,31 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">区分</th>
-    <th style="text-align:left;">関数名</th>
-    <th width="140" style="text-align:left;">関数f(x)</th>
-    <th width="90" style="text-align:left;">確率変数P(X)</th>
-    <th width="130"  style="text-align:left;">期待値(平均)</th>
-    <th width="150"  style="text-align:left;">分散</th>
+  <tbody><tr>
+    <th style="text-align: left;">区分</th>
+    <th style="text-align: left;">関数名</th>
+    <th style="text-align: left;">関数f(x)</th>
+    <th style="text-align: left;">確率変数P(X)</th>
+    <th style="text-align: left;">期待値(平均)</th>
+    <th style="text-align: left;">分散</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">確率密度関数</th>
-    <th style="text-align:left;font-size: 15px; ">$\int_{-{\infty}}^{\infty} f(x)dx = 1$</th>
-    <th style="text-align:left;font-size: 15px; ">$\int_a^b f(x)dx$</th>
-    <th style="text-align:left;font-size: 15px; ">$\displaystyle\int_{-{\infty}}^{\infty} xf(x)dx$</th>
-    <th style="text-align:left;font-size: 15px; ">$\displaystyle\int_{-{\infty}}^{\infty}(x-\mu)^2f(x)dx$</th>
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">確率密度関数</th>
+    <th style="text-align: left; font-size: 15px;">$\int_{-{\infty}}^{\infty} f(x)dx = 1$</th>
+    <th style="text-align: left; font-size: 15px;">$\int_a^b f(x)dx$</th>
+    <th style="text-align: left; font-size: 15px;">$\displaystyle\int_{-{\infty}}^{\infty} xf(x)dx$</th>
+    <th style="text-align: left; font-size: 15px;">$\displaystyle\int_{-{\infty}}^{\infty}(x-\mu)^2f(x)dx$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">確率質量関数</th>
-    <th style="text-align:left;font-size: 15px; ">$\sum_{i=1}^{\infty} p(x_i) = 1$</th>
-    <th style="text-align:left;font-size: 15px; ">$\sum_{i=a}^b p(x_i)$</th>
-    <th style="text-align:left;font-size: 15px; ">$\sum_{i=a}^b x_i\cdot{p(x_i)}$</th>
-    <th style="text-align:left;font-size: 15px; ">$\displaystyle \sum_{i=1}^n \left( x_i -\mu \right)^2 p_i$</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">確率質量関数</th>
+    <th style="text-align: left; font-size: 15px;">$\sum_{i=1}^{\infty} p(x_i) = 1$</th>
+    <th style="text-align: left; font-size: 15px;">$\sum_{i=a}^b p(x_i)$</th>
+    <th style="text-align: left; font-size: 15px;">$\sum_{i=a}^b x_i\cdot{p(x_i)}$</th>
+    <th style="text-align: left; font-size: 15px;">$\displaystyle \sum_{i=1}^n \left( x_i -\mu \right)^2 p_i$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13024,15 +13200,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[18],2017/11[16]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">2018/11[18],2017/11[16]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13041,15 +13217,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th width="200" style="text-align:left;font-size: 20px;">関数f(x)</th>
-    <th width="200" style="text-align:left;font-size: 20px;">$E(x^n)$</th>
+  <tbody><tr>
+    <th style="text-align: left; font-size: 20px;">関数f(x)</th>
+    <th style="text-align: left; font-size: 20px;">$E(x^n)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;font-size: 20px; ">$\int_{-{\infty}}^{\infty} f(x)dx = 1$</th>
-    <th style="text-align:left;font-size: 20px; ">$\displaystyle\int_{-{\infty}}^{\infty} {x^n}f(x)dx$</th>
+    <th style="text-align: left; font-size: 20px;">$\int_{-{\infty}}^{\infty} f(x)dx = 1$</th>
+    <th style="text-align: left; font-size: 20px;">$\displaystyle\int_{-{\infty}}^{\infty} {x^n}f(x)dx$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13066,47 +13242,47 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27096;&#12293;&#12394;&#30906;&#29575;&#20998;&#24067;">&#27096;&#12293;&#12394;&#30906;&#29575;&#20998;&#24067;<a class="anchor-link" href="#&#27096;&#12293;&#12394;&#30906;&#29575;&#20998;&#24067;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">分布名</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">分布名</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">二項分布</th>
-    <th style="text-align:left;">2018/11[14,24],2017/11[20],2017/06[17,18]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">二項分布</th>
+    <th style="text-align: left;">2018/11[14,24],2017/11[20],2017/06[17,18]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
    <tr>
-    <th style="text-align:left;">ベルヌーイ分布</th>
-    <th style="text-align:left;">2016/11[23]</th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">ベルヌーイ分布</th>
+    <th style="text-align: left;">2016/11[23]</th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">ポアソン分布</th>
-    <th style="text-align:left;">2017/11[22,23]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">ポアソン分布</th>
+    <th style="text-align: left;">2017/11[22,23]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続一様分布</th>
-    <th style="text-align:left;">2018/11[18]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">連続一様分布</th>
+    <th style="text-align: left;">2018/11[18]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">t分布</th>
-    <th style="text-align:left;">2018/11[18],2017/11[17]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">t分布</th>
+    <th style="text-align: left;">2018/11[18],2017/11[17]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">カイ二乗分布</th>
-    <th style="text-align:left;">2017/11[17],2017/06[21,22]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">カイ二乗分布</th>
+    <th style="text-align: left;">2017/11[17],2017/06[21,22]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">F分布</th>
-    <th style="text-align:left;">2017/11[17,18]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">F分布</th>
+    <th style="text-align: left;">2017/11[17,18]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13115,79 +13291,79 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th width="40" style="text-align:left;">区分</th>
-    <th width="100" style="text-align:left;">分布名</th>
-    <th width="250" style="text-align:left;">意味とパラメータ</th>
-    <th width="150" style="text-align:left;">関数f(x)</th>
-    <th width="50" style="text-align:left;">平均</th>
-    <th width="100" style="text-align:left;">分散</th>
-    <th width="100" style="text-align:left;">分布の記号</th>
+  <tbody><tr>
+    <th style="text-align: left;">区分</th>
+    <th style="text-align: left;">分布名</th>
+    <th style="text-align: left;">意味とパラメータ</th>
+    <th style="text-align: left;">関数f(x)</th>
+    <th style="text-align: left;">平均</th>
+    <th style="text-align: left;">分散</th>
+    <th style="text-align: left;">分布の記号</th>
   </tr>
   <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">二項分布</th>
-    <th style="text-align:left;">１回当たりの成功確率がpの試行をn回行ったときの成功回数xの分布</th>
-    <th style="text-align:left;font-size: 15px; ">${_n C _x p^x (1-p)^{n-x}}$</th>
-    <th style="text-align:left;font-size: 15px; ">$np$</th>
-    <th style="text-align:left;font-size: 15px; ">$np(1-p)$</th>
-    <th style="text-align:left;font-size: 15px; ">$Bi(n, p)$</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">二項分布</th>
+    <th style="text-align: left;">１回当たりの成功確率がpの試行をn回行ったときの成功回数xの分布</th>
+    <th style="text-align: left; font-size: 15px;">${_n C _x p^x (1-p)^{n-x}}$</th>
+    <th style="text-align: left; font-size: 15px;">$np$</th>
+    <th style="text-align: left; font-size: 15px;">$np(1-p)$</th>
+    <th style="text-align: left; font-size: 15px;">$Bi(n, p)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">ベルヌーイ分布</th>
-    <th style="text-align:left;">n=1の二項分布。成功確率がpの施工を1回行った時の成功回数ｘ=0,1の分布</th>
-    <th style="text-align:left;font-size: 15px;">$p^x(1-p)^{(1-x)}$</th>
-    <th style="text-align:left;font-size: 15px;">$p$</th>
-    <th style="text-align:left;font-size: 15px;">$p(1-p)$</th>
-    <th style="text-align:left;font-size: 15px;">$Ber(p) $</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">ベルヌーイ分布</th>
+    <th style="text-align: left;">n=1の二項分布。成功確率がpの施工を1回行った時の成功回数ｘ=0,1の分布</th>
+    <th style="text-align: left; font-size: 15px;">$p^x(1-p)^{(1-x)}$</th>
+    <th style="text-align: left; font-size: 15px;">$p$</th>
+    <th style="text-align: left; font-size: 15px;">$p(1-p)$</th>
+    <th style="text-align: left; font-size: 15px;">$Ber(p) $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">ポアソン分布</th>
-    <th style="text-align:left;">np=λ、n→∞、p→0の二項分布</th>
-    <th style="text-align:left;font-size: 20px;">${e^{-λ} \frac{λ^x}{x!}}$</th>
-    <th style="text-align:left;font-size: 15px;">$λ$</th>
-    <th style="text-align:left;font-size: 15px;">$λ$</th>
-    <th style="text-align:left;font-size: 15px;">$Po(λ)$</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">ポアソン分布</th>
+    <th style="text-align: left;">np=λ、n→∞、p→0の二項分布</th>
+    <th style="text-align: left; font-size: 20px;">${e^{-λ} \frac{λ^x}{x!}}$</th>
+    <th style="text-align: left; font-size: 15px;">$λ$</th>
+    <th style="text-align: left; font-size: 15px;">$λ$</th>
+    <th style="text-align: left; font-size: 15px;">$Po(λ)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">幾何分布</th>
-    <th style="text-align:left;">成功確率pの試行でx-1回目まで失敗してx回目で初めて成功したxの分布</th>
-    <th style="text-align:left;font-size: 15px;">${p(1-p)^{x-1}}$</th>
-    <th style="text-align:left;font-size: 20px;">${\frac{1}{p}}$</th>
-    <th style="text-align:left;font-size: 20px;">${\frac{1-p}{p^2}}$</th>
-    <th style="text-align:left;font-size: 15px;">$Ge(p)$</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">幾何分布</th>
+    <th style="text-align: left;">成功確率pの試行でx-1回目まで失敗してx回目で初めて成功したxの分布</th>
+    <th style="text-align: left; font-size: 15px;">${p(1-p)^{x-1}}$</th>
+    <th style="text-align: left; font-size: 20px;">${\frac{1}{p}}$</th>
+    <th style="text-align: left; font-size: 20px;">${\frac{1-p}{p^2}}$</th>
+    <th style="text-align: left; font-size: 15px;">$Ge(p)$</th>
 </tr>
    <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">超幾何分布</th>
-    <th style="text-align:left;">M個の赤玉とN-M個の白玉から同時にn個取り出した中に含む赤玉の個数xの分布</th>
-    <th style="text-align:left;font-size: 15px;">$\begin{eqnarray*}\frac{{}_M\mathrm{C}_x\cdot {}_{N-M}\mathrm{C}_{n-x}}{{}_N\mathrm{C}_n}\end{eqnarray*}$</th>
-    <th style="text-align:left;font-size: 20px;">$\frac{nM}{N}$</th>
-    <th style="text-align:left;font-size: 11px; ">$\left(\frac{nM}{N}\right)\left(1-\frac{M}{N}\right)\left(\frac{N-n}{N-1}\right)$</th>
-     <th style="text-align:left;font-size: 15px;">$HG(N, M, n) $</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">超幾何分布</th>
+    <th style="text-align: left;">M個の赤玉とN-M個の白玉から同時にn個取り出した中に含む赤玉の個数xの分布</th>
+    <th style="text-align: left; font-size: 15px;">$\begin{eqnarray*}\frac{{}_M\mathrm{C}_x\cdot {}_{N-M}\mathrm{C}_{n-x}}{{}_N\mathrm{C}_n}\end{eqnarray*}$</th>
+    <th style="text-align: left; font-size: 20px;">$\frac{nM}{N}$</th>
+    <th style="text-align: left; font-size: 11px;">$\left(\frac{nM}{N}\right)\left(1-\frac{M}{N}\right)\left(\frac{N-n}{N-1}\right)$</th>
+     <th style="text-align: left; font-size: 15px;">$HG(N, M, n) $</th>
   </tr>
    <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">負の二項分布</th>
-    <th style="text-align:left;">成功確率がpの試行をk回成功するまで繰り返したときの失敗回数xの分布</th>
-    <th style="text-align:left;font-size: 15px;">${_{x+k-1} C _x p^k (1-p)^x}$</th>
-    <th style="text-align:left;font-size: 20px;">$\frac{kq}{p}$</th>
-    <th style="text-align:left;font-size: 20px;">$\frac{kq}{p^2}$</th>
-    <th style="text-align:left;font-size: 15px;">$NB(k, p) $</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">負の二項分布</th>
+    <th style="text-align: left;">成功確率がpの試行をk回成功するまで繰り返したときの失敗回数xの分布</th>
+    <th style="text-align: left; font-size: 15px;">${_{x+k-1} C _x p^k (1-p)^x}$</th>
+    <th style="text-align: left; font-size: 20px;">$\frac{kq}{p}$</th>
+    <th style="text-align: left; font-size: 20px;">$\frac{kq}{p^2}$</th>
+    <th style="text-align: left; font-size: 15px;">$NB(k, p) $</th>
   </tr>
    <tr>
-    <th style="text-align:left;">離散</th>
-    <th style="text-align:left;">離散一様分布</th>
-    <th style="text-align:left;">確率変数Xの幅を固定した場合に確率が一定となる分布。Xの最大値をNとする。</th>
-    <th style="text-align:left;font-size: 20px;">$\frac{1}{N}$</th>
-    <th style="text-align:left;font-size: 20px;">${\frac{N+1}{2}}$</th>
-    <th style="text-align:left;font-size: 20px;">$\frac{N^2-1}{12}$</th>
-    <th style="text-align:left;font-size: 15px;">$DU(N)$</th>
+    <th style="text-align: left;">離散</th>
+    <th style="text-align: left;">離散一様分布</th>
+    <th style="text-align: left;">確率変数Xの幅を固定した場合に確率が一定となる分布。Xの最大値をNとする。</th>
+    <th style="text-align: left; font-size: 20px;">$\frac{1}{N}$</th>
+    <th style="text-align: left; font-size: 20px;">${\frac{N+1}{2}}$</th>
+    <th style="text-align: left; font-size: 20px;">$\frac{N^2-1}{12}$</th>
+    <th style="text-align: left; font-size: 15px;">$DU(N)$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13205,71 +13381,71 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th width="50" style="text-align:left;">区分</th>
-    <th width="90" style="text-align:left;">分布名</th>
-    <th width="280" style="text-align:left;">意味とパラメータ</th>
-    <th width="150" style="text-align:left;">関数f(x)</th>
-    <th width="90"  style="text-align:left;">平均</th>
-    <th width="100"  style="text-align:left;">分散</th>
-    <th width="80"  style="text-align:left;">分布の記号</th>
+  <tbody><tr>
+    <th style="text-align: left;">区分</th>
+    <th style="text-align: left;">分布名</th>
+    <th style="text-align: left;">意味とパラメータ</th>
+    <th style="text-align: left;">関数f(x)</th>
+    <th style="text-align: left;">平均</th>
+    <th style="text-align: left;">分散</th>
+    <th style="text-align: left;">分布の記号</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">正規分布</th>
-    <th style="text-align:left;">期待値μの付近に標準偏差σで集積する分布</th>
-    <th style="text-align:left;font-size: 15px;">$\frac{1}{\sqrt{2\pi \sigma^2}} \exp \left(-\frac{(x - \mu)^2}
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">正規分布</th>
+    <th style="text-align: left;">期待値μの付近に標準偏差σで集積する分布</th>
+    <th style="text-align: left; font-size: 15px;">$\frac{1}{\sqrt{2\pi \sigma^2}} \exp \left(-\frac{(x - \mu)^2}
 {2\sigma^2} \right) \hspace{20px}$</th>
-    <th style="text-align:left;font-size: 15px;">$\mu$</th>
-    <th style="text-align:left;font-size: 15px;">$\sigma^2$</th>
-    <th style="text-align:left;font-size: 15px;">$N(\mu,\sigma^2)$</th>
+    <th style="text-align: left; font-size: 15px;">$\mu$</th>
+    <th style="text-align: left; font-size: 15px;">$\sigma^2$</th>
+    <th style="text-align: left; font-size: 15px;">$N(\mu,\sigma^2)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">指数分布</th>
-    <th style="text-align:left;">単位時間の生起回数が期待値λのポアソン分布に従う事象が初めて生起するまでの待ち時間tの分布</th>
-    <th style="text-align:left;font-size: 20px;">${λe^{-λt}}$</th>
-    <th style="text-align:left;font-size: 20px;">${\frac{1}{λ}}$</th>
-    <th style="text-align:left;font-size: 20px;">${\frac{1}{λ^2}}$</th>
-     <th style="text-align:left;font-size: 15px;">$Ex(λ)$</th>
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">指数分布</th>
+    <th style="text-align: left;">単位時間の生起回数が期待値λのポアソン分布に従う事象が初めて生起するまでの待ち時間tの分布</th>
+    <th style="text-align: left; font-size: 20px;">${λe^{-λt}}$</th>
+    <th style="text-align: left; font-size: 20px;">${\frac{1}{λ}}$</th>
+    <th style="text-align: left; font-size: 20px;">${\frac{1}{λ^2}}$</th>
+     <th style="text-align: left; font-size: 15px;">$Ex(λ)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">連続一様分布</th>
-    <th style="text-align:left;">確率変数Xの幅を固定した場合に確率が一定となる分布。<br>Xの最小値をaとし最大値をbとする。</th>
-    <th style="text-align:left;font-size: 20px;">$\frac{1}{b-a}$  (a≦x≦b) <br> 0  (その他) </th>
-    <th style="text-align:left;font-size: 20px;">${\frac{a+b}{2}}$</th>
-    <th style="text-align:left;font-size: 20px;">${\frac{(b-a)^2}{12}}$</th>
-    <th style="text-align:left;font-size: 15px;">$U(a, b) $</th>
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">連続一様分布</th>
+    <th style="text-align: left;">確率変数Xの幅を固定した場合に確率が一定となる分布。<br>Xの最小値をaとし最大値をbとする。</th>
+    <th style="text-align: left; font-size: 20px;">$\frac{1}{b-a}$  (a≦x≦b) <br> 0  (その他) </th>
+    <th style="text-align: left; font-size: 20px;">${\frac{a+b}{2}}$</th>
+    <th style="text-align: left; font-size: 20px;">${\frac{(b-a)^2}{12}}$</th>
+    <th style="text-align: left; font-size: 15px;">$U(a, b) $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">t分布</th>
-    <th style="text-align:left;">母集団の平均と分散が未知で標本サイズが小さい場合に平均を推定する問題に利用される。kは自由度<br>自由度を大きくすると正規分布に近付く<br><br>$W\sim \chi^2(k)$と$Z\sim N(0,1)$が互いに独立な時、<br>$\frac{\LARGE{Z}}{\sqrt{\LARGE{\frac{W}{n}}}}$は自由度$n$のt分布に従う</th>
-    <th style="text-align:left;">省略</th>
-    <th style="text-align:left;font-size: 15px;">$0$<br>$(k>1)$</th>
-    <th style="text-align:left;font-size: 15px;">${\large　\frac{k}{k-2}}$<br>$(k>2)$</th>
-    <th style="text-align:left;font-size: 15px;">$t(k)$</th>
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">t分布</th>
+    <th style="text-align: left;">母集団の平均と分散が未知で標本サイズが小さい場合に平均を推定する問題に利用される。kは自由度<br>自由度を大きくすると正規分布に近付く<br><br>$W\sim \chi^2(k)$と$Z\sim N(0,1)$が互いに独立な時、<br>$\frac{\LARGE{Z}}{\sqrt{\LARGE{\frac{W}{n}}}}$は自由度$n$のt分布に従う</th>
+    <th style="text-align: left;">省略</th>
+    <th style="text-align: left; font-size: 15px;">$0$<br>$(k&gt;1)$</th>
+    <th style="text-align: left; font-size: 15px;">${\large　\frac{k}{k-2}}$<br>$(k&gt;2)$</th>
+    <th style="text-align: left; font-size: 15px;">$t(k)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">カイ二乗分布</th>
-    <th style="text-align:left;">適合度検定や独立性検定等で用いられる。 k は自由度<br><br>$Z_{1},Z_{2}, ・・・ ,Z_{k}$が互いに独立で$N(0,1)$に従う時、$W=Z_{1}^{2}+Z_{2}^{2}+\cdots+Z_{k}^{2} $は自由度$k$のカイ二乗分布に従う</th>
-    <th style="text-align:left;">省略</th>
-    <th style="text-align:left;font-size: 15px;">$k$</th>
-    <th style="text-align:left;font-size: 15px;">$2k$</th>
-    <th style="text-align:left;font-size: 15px;">$\chi^2(k)$</th>
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">カイ二乗分布</th>
+    <th style="text-align: left;">適合度検定や独立性検定等で用いられる。 k は自由度<br><br>$Z_{1},Z_{2}, ・・・ ,Z_{k}$が互いに独立で$N(0,1)$に従う時、$W=Z_{1}^{2}+Z_{2}^{2}+\cdots+Z_{k}^{2} $は自由度$k$のカイ二乗分布に従う</th>
+    <th style="text-align: left;">省略</th>
+    <th style="text-align: left; font-size: 15px;">$k$</th>
+    <th style="text-align: left; font-size: 15px;">$2k$</th>
+    <th style="text-align: left; font-size: 15px;">$\chi^2(k)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">連続</th>
-    <th style="text-align:left;">F分布</th>
-    <th style="text-align:left;">等分散性の検定で用いられる。 $m_1$と$m_2$ は自由度<br><br>$W_1\sim \chi^2(k_1)$と$W_2\sim \chi^2(m_m)$が互いに独立な時、$\large{\frac{W_1/m_1}{W_2/m_2}}$は自由度$(m_1,m_2)$のF分布に従う<br><br>$\large{F_{\alpha}(m_1,m_2)=}\frac{\LARGE{1}}{\LARGE{F_{1-\alpha}(m_1,m_2)}}$<br>と上側確率から下側確率を算出できる</th>
-    <th style="text-align:left;">省略</th>
-    <th style="text-align:left;font-size: 15px;">$\large{\frac{m_2}{m_2-2}}$<br><br>$(m_2>2)$</th>
-    <th style="text-align:left;font-size: 15px;">$\frac{2m_2^2(m_1+m_2-2)}{m_1(m_2-2)^2(m_2-4)}$<br><br>$(m_2>4)$</th>
-    <th style="text-align:left;font-size: 15px;">$F(m_1,m_2)$</th>
+    <th style="text-align: left;">連続</th>
+    <th style="text-align: left;">F分布</th>
+    <th style="text-align: left;">等分散性の検定で用いられる。 $m_1$と$m_2$ は自由度<br><br>$W_1\sim \chi^2(k_1)$と$W_2\sim \chi^2(m_m)$が互いに独立な時、$\large{\frac{W_1/m_1}{W_2/m_2}}$は自由度$(m_1,m_2)$のF分布に従う<br><br>$\large{F_{\alpha}(m_1,m_2)=}\frac{\LARGE{1}}{\LARGE{F_{1-\alpha}(m_1,m_2)}}$<br>と上側確率から下側確率を算出できる</th>
+    <th style="text-align: left;">省略</th>
+    <th style="text-align: left; font-size: 15px;">$\large{\frac{m_2}{m_2-2}}$<br><br>$(m_2&gt;2)$</th>
+    <th style="text-align: left; font-size: 15px;">$\frac{2m_2^2(m_1+m_2-2)}{m_1(m_2-2)^2(m_2-4)}$<br><br>$(m_2&gt;4)$</th>
+    <th style="text-align: left; font-size: 15px;">$F(m_1,m_2)$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13294,15 +13470,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27161;&#28310;&#27491;&#35215;&#20998;&#24067;">&#27161;&#28310;&#27491;&#35215;&#20998;&#24067;<a class="anchor-link" href="#&#27161;&#28310;&#27491;&#35215;&#20998;&#24067;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[12,13],2018/06[15,16],2017/11[19,21],2017/06[13]</th>
-    <th style="text-align:left;">100%</th>
+    <th style="text-align: left;">2018/11[12,13],2018/06[15,16],2017/11[19,21],2017/06[13]</th>
+    <th style="text-align: left;">100%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13311,23 +13487,23 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">標準化</th>
-    <th style="text-align:left;font-size: 15px;">$X \sim \mathcal{N}(\mu, \sigma^{2})$の時、$Z={\large\frac{X-\mu}{\sigma}}$と定義すると$Z \sim \mathcal{N}(0, 1)$となる。<br>標準化を行うことにより、単位や平均値などが異なるデータ同士を正規分布表を使って比較できるようになる。</th>
+    <th style="text-align: left;">標準化</th>
+    <th style="text-align: left; font-size: 15px;">$X \sim \mathcal{N}(\mu, \sigma^{2})$の時、$Z={\large\frac{X-\mu}{\sigma}}$と定義すると$Z \sim \mathcal{N}(0, 1)$となる。<br>標準化を行うことにより、単位や平均値などが異なるデータ同士を正規分布表を使って比較できるようになる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">正規分布の再生性</th>
-    <th style="text-align:left;font-size: 15px;">$X_{1} \sim \mathcal{N}(\mu_{1}, {\sigma_{1}}^{2})$と独立な$X _{2}\sim \mathcal{N}(\mu_{2}, {\sigma_{2}}^{2})$を足すと、$(X_{1}+X_{2})\sim \mathcal{N}(\mu_{1} + \mu_{2}, {\sigma_{1}}^{2} + {\sigma_{2}}^{2} )$</th>
+    <th style="text-align: left;">正規分布の再生性</th>
+    <th style="text-align: left; font-size: 15px;">$X_{1} \sim \mathcal{N}(\mu_{1}, {\sigma_{1}}^{2})$と独立な$X _{2}\sim \mathcal{N}(\mu_{2}, {\sigma_{2}}^{2})$を足すと、$(X_{1}+X_{2})\sim \mathcal{N}(\mu_{1} + \mu_{2}, {\sigma_{1}}^{2} + {\sigma_{2}}^{2} )$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">差の分布</th>
-    <th style="text-align:left;font-size: 15px;">$X_{1} \sim \mathcal{N}(\mu_{1}, {\sigma_{1}}^{2})$と独立な$X _{2}\sim \mathcal{N}(\mu_{2}, {\sigma_{2}}^{2})$を引くと、$(X_{1}-X_{2})\sim \mathcal{N}(\mu_{1} - \mu_{2}, {\sigma_{1}}^{2} + {\sigma_{2}}^{2} )$</th>
+    <th style="text-align: left;">差の分布</th>
+    <th style="text-align: left; font-size: 15px;">$X_{1} \sim \mathcal{N}(\mu_{1}, {\sigma_{1}}^{2})$と独立な$X _{2}\sim \mathcal{N}(\mu_{2}, {\sigma_{2}}^{2})$を引くと、$(X_{1}-X_{2})\sim \mathcal{N}(\mu_{1} - \mu_{2}, {\sigma_{1}}^{2} + {\sigma_{2}}^{2} )$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13344,15 +13520,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[16]</th>
-     <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/11[16]</th>
+     <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13361,42 +13537,42 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">公式名</th>
-    <th width="650" style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">公式名</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">不偏分散</th>
-    <th style="text-align:left;font-size: 15px;">${\large\frac{1}{n - 1}}\sum_{i = 1}^n {(x_i - \overline{x})^2}$</th>
+    <th style="text-align: left;">不偏分散</th>
+    <th style="text-align: left; font-size: 15px;">${\large\frac{1}{n - 1}}\sum_{i = 1}^n {(x_i - \overline{x})^2}$</th>
   </tr>
    <tr>
-    <th style="text-align:left;">標本分散</th>
-    <th style="text-align:left;font-size: 15px;">${\large\frac{1}{n }}\sum_{i = 1}^n {(x_i - \overline{x})^2}$</th>
+    <th style="text-align: left;">標本分散</th>
+    <th style="text-align: left; font-size: 15px;">${\large\frac{1}{n }}\sum_{i = 1}^n {(x_i - \overline{x})^2}$</th>
   </tr>
    <tr>
-    <th style="text-align:left;">不偏分散と標本分散の関係</th>
-    <th style="text-align:left;font-size: 15px;">$ \hat{\sigma}^2 = {\large\frac{n}{n-1}}\sigma^2 $</th>
+    <th style="text-align: left;">不偏分散と標本分散の関係</th>
+    <th style="text-align: left; font-size: 15px;">$ \hat{\sigma}^2 = {\large\frac{n}{n-1}}\sigma^2 $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">標本平均の期待値</th>
-    <th style="text-align:left;font-size: 15px;">${ \displaystyle
+    <th style="text-align: left;">標本平均の期待値</th>
+    <th style="text-align: left; font-size: 15px;">${ \displaystyle
 E( \bar{X} )  = E( \frac{1}{n} \sum_{k = 1}^{n} X_i ) = \frac{1}{n} E( \sum_{k=1}^{n}  X_i ) = \frac{1}{n} \sum_{k=1}^{n}  E( X_i ) = \frac{1}{n} \sum_{k=1}^{n} \mu = \mu}$</th>
   </tr>
    <tr>
-    <th style="text-align:left;">標本平均の分散</th>
-    <th style="text-align:left;font-size: 15px;">${ \displaystyle
+    <th style="text-align: left;">標本平均の分散</th>
+    <th style="text-align: left; font-size: 15px;">${ \displaystyle
 V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k=1}^{n}  X_i )= \frac{1}{n^2} \sum_{k=1}^{n}  V( X_i )= \frac{1}{n^2} \sum_{k=1}^{n} {\sigma}^2= \frac{{\sigma}^2}{n}
 }$</th>
   </tr>
    <tr>
-    <th style="text-align:left;">標本平均の分布</th>
-    <th style="text-align:left;font-size: 15px;">正規分布に従う。${ N(\mu,{\large\frac{{\sigma}^2}{n}})}$</th>
+    <th style="text-align: left;">標本平均の分布</th>
+    <th style="text-align: left; font-size: 15px;">正規分布に従う。${ N(\mu,{\large\frac{{\sigma}^2}{n}})}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">${\large　μ^2}$の不偏推定量</th>
-    <th style="text-align:left;font-size: 15px;">$ \overline{X}^2 -{\large\frac{\hat{\sigma}^2}{n}}$</th>
+    <th style="text-align: left;">${\large　μ^2}$の不偏推定量</th>
+    <th style="text-align: left; font-size: 15px;">$ \overline{X}^2 -{\large\frac{\hat{\sigma}^2}{n}}$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13413,22 +13589,22 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#24179;&#22343;&#12398;&#21306;&#38291;&#25512;&#23450;">&#27597;&#24179;&#22343;&#12398;&#21306;&#38291;&#25512;&#23450;<a class="anchor-link" href="#&#27597;&#24179;&#22343;&#12398;&#21306;&#38291;&#25512;&#23450;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-     <th style="text-align:left;">𝜎が既知(母分散既知)</th>
-    <th style="text-align:left;">2018/06[20],2017/06[23]</th>
-     <th style="text-align:left;">50%</th>
+     <th style="text-align: left;">𝜎が既知(母分散既知)</th>
+    <th style="text-align: left;">2018/06[20],2017/06[23]</th>
+     <th style="text-align: left;">50%</th>
   </tr>
   <tr>
-     <th style="text-align:left;">𝜎が未知(母分散未知)</th>
-    <th style="text-align:left;">2018/06[21],2017/06[25,26]</th>
-     <th style="text-align:left;">50%</th>
+     <th style="text-align: left;">𝜎が未知(母分散未知)</th>
+    <th style="text-align: left;">2018/06[21],2017/06[25,26]</th>
+     <th style="text-align: left;">50%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13437,42 +13613,42 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="&#120590;&#12364;&#26082;&#30693;(&#27597;&#20998;&#25955;&#26082;&#30693;)">&#120590;&#12364;&#26082;&#30693;(&#27597;&#20998;&#25955;&#26082;&#30693;)<a class="anchor-link" href="#&#120590;&#12364;&#26082;&#30693;(&#27597;&#20998;&#25955;&#26082;&#30693;)">&#182;</a></h5><table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th width="200" style="text-align:left;">手順</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">標本平均$\LARGE{\overline{x}}$を求める</th>
-    <th style="text-align:left;font-size: 15px;">抽出した標本の平均値を求める</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">標本平均$\LARGE{\overline{x}}$を求める</th>
+    <th style="text-align: left; font-size: 15px;">抽出した標本の平均値を求める</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">標本平均の標準化する</th>
-    <th style="text-align:left;font-size: 15px;">母平均を$\large{\mu}$、母分散を$\large{\sigma^{2}}$、抽出したサンプルサイズを$\large{n}$とすると標本平均は、${\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{σ^2}{n}}}}}$と標準化される。</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">標本平均の標準化する</th>
+    <th style="text-align: left; font-size: 15px;">母平均を$\large{\mu}$、母分散を$\large{\sigma^{2}}$、抽出したサンプルサイズを$\large{n}$とすると標本平均は、${\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{σ^2}{n}}}}}$と標準化される。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">統計量Tを定義する</th>
-    <th style="text-align:left;font-size: 15px;">標準化した標本平均を統計量Tとすると、統計量 $T={\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{σ^2}{n}}}}}$ は$ N(0,\sqrt{1})$に従う</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">統計量Tを定義する</th>
+    <th style="text-align: left; font-size: 15px;">標準化した標本平均を統計量Tとすると、統計量 $T={\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{σ^2}{n}}}}}$ は$ N(0,\sqrt{1})$に従う</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">統計量Tの有意水準での範囲</th>
-    <th style="text-align:left;font-size: 15px;">$\large{-z_{\alpha/2}} \leq {\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{σ^2}{n}}}}} \leq \large{z_{\alpha/2} }$<br>$\large{z_{\alpha/2}}$は正規分布における上側確率が$\alpha/2$となる値。有意水準が0.05の場合はP値が0.025となる1.96が$\large{z_{\alpha/2}}$の値</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">統計量Tの有意水準での範囲</th>
+    <th style="text-align: left; font-size: 15px;">$\large{-z_{\alpha/2}} \leq {\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{σ^2}{n}}}}} \leq \large{z_{\alpha/2} }$<br>$\large{z_{\alpha/2}}$は正規分布における上側確率が$\alpha/2$となる値。有意水準が0.05の場合はP値が0.025となる1.96が$\large{z_{\alpha/2}}$の値</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">母平均を区間推定する</th>
-    <th style="text-align:left;font-size: 15px;">$ \large{\overline{x}-\large{z_{\alpha/2}}\times \sqrt{\frac{\sigma^{2}}{n}} \leq \mu  \leq \overline{x}+\large{z_{\alpha/2}} \times \sqrt{\frac{\sigma^{2}}{n}} }$</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">母平均を区間推定する</th>
+    <th style="text-align: left; font-size: 15px;">$ \large{\overline{x}-\large{z_{\alpha/2}}\times \sqrt{\frac{\sigma^{2}}{n}} \leq \mu  \leq \overline{x}+\large{z_{\alpha/2}} \times \sqrt{\frac{\sigma^{2}}{n}} }$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13481,37 +13657,37 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="&#120590;&#12364;&#26082;&#30693;(&#27597;&#20998;&#25955;&#26410;&#30693;)">&#120590;&#12364;&#26082;&#30693;(&#27597;&#20998;&#25955;&#26410;&#30693;)<a class="anchor-link" href="#&#120590;&#12364;&#26082;&#30693;(&#27597;&#20998;&#25955;&#26410;&#30693;)">&#182;</a></h5><table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th width="200" style="text-align:left;">手順</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">標本平均$\LARGE{\overline{x}}$を求める</th>
-    <th style="text-align:left;font-size: 15px;">抽出した標本の平均値を求める</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">標本平均$\LARGE{\overline{x}}$を求める</th>
+    <th style="text-align: left; font-size: 15px;">抽出した標本の平均値を求める</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">統計量Tを定義する</th>
-    <th style="text-align:left;font-size: 15px;">母平均を$\large{\mu}$、標本分散を$\large{s^2 = {\large\frac{1}{n - 1}}\sum_{i = 1}^n {(x_i - \overline{x})^2}}$、抽出したサンプルサイズを$\large{n}$とすると、<br>統計量 $T={\LARGE\frac{\bar{x}-μ}{\LARGE\sqrt\frac{s^2}{n}}}$は$ t(n-1)$に従う</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">統計量Tを定義する</th>
+    <th style="text-align: left; font-size: 15px;">母平均を$\large{\mu}$、標本分散を$\large{s^2 = {\large\frac{1}{n - 1}}\sum_{i = 1}^n {(x_i - \overline{x})^2}}$、抽出したサンプルサイズを$\large{n}$とすると、<br>統計量 $T={\LARGE\frac{\bar{x}-μ}{\LARGE\sqrt\frac{s^2}{n}}}$は$ t(n-1)$に従う</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">統計量Tの有意水準での範囲</th>
-    <th style="text-align:left;font-size: 15px;">$-\large{t_{\alpha/2}(n-1)}\leq \LARGE\frac{\overline{x}-\mu}{\sqrt{\frac{s^{2}}{n}}}  \leq \large{t_{\alpha/2}(n-1)}$<br>$\large{t_{\alpha/2}(n-1)}$は自由度が(n-1)のt分布における上側確率が$\large{\alpha/2}$となる値。t値と呼ぶ</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">統計量Tの有意水準での範囲</th>
+    <th style="text-align: left; font-size: 15px;">$-\large{t_{\alpha/2}(n-1)}\leq \LARGE\frac{\overline{x}-\mu}{\sqrt{\frac{s^{2}}{n}}}  \leq \large{t_{\alpha/2}(n-1)}$<br>$\large{t_{\alpha/2}(n-1)}$は自由度が(n-1)のt分布における上側確率が$\large{\alpha/2}$となる値。t値と呼ぶ</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">母平均を区間推定する</th>
-    <th style="text-align:left;font-size: 15px;">$\large{\overline{x}}-\large{t_{\alpha/2}(n-1)} \times \LARGE{\sqrt{\frac{s^{2}}{n}}} \leq \mu  \leq \large{\overline{x}}+\large{t_{\alpha/2}(n-1)} \times \LARGE{\sqrt{\frac{s^{2}}{n}}}$</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">母平均を区間推定する</th>
+    <th style="text-align: left; font-size: 15px;">$\large{\overline{x}}-\large{t_{\alpha/2}(n-1)} \times \LARGE{\sqrt{\frac{s^{2}}{n}}} \leq \mu  \leq \large{\overline{x}}+\large{t_{\alpha/2}(n-1)} \times \LARGE{\sqrt{\frac{s^{2}}{n}}}$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13520,22 +13696,22 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#20998;&#25955;&#12398;&#21306;&#38291;&#25512;&#23450;">&#27597;&#20998;&#25955;&#12398;&#21306;&#38291;&#25512;&#23450;<a class="anchor-link" href="#&#27597;&#20998;&#25955;&#12398;&#21306;&#38291;&#25512;&#23450;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">頻度</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">頻度</th>
   </tr>
   <tr>
-     <th style="text-align:left;">母平均既知(母平均𝜇が既知)</th>
-    <th style="text-align:left;"></th>
-     <th style="text-align:left;"></th>
+     <th style="text-align: left;">母平均既知(母平均𝜇が既知)</th>
+    <th style="text-align: left;"></th>
+     <th style="text-align: left;"></th>
   </tr>
   <tr>
-     <th style="text-align:left;">母平均未知(母平均𝜇が未知)</th>
-    <th style="text-align:left;"></th>
-     <th style="text-align:left;"></th>
+     <th style="text-align: left;">母平均未知(母平均𝜇が未知)</th>
+    <th style="text-align: left;"></th>
+     <th style="text-align: left;"></th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13543,23 +13719,23 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><table>
-  <tr>
-    <th style="text-align:left;">条件</th>
-    <th style="text-align:left;">何を区間推定するか？</th>
-    <th width="420" style="text-align:left;">統計量Tが従う分布</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">母平均既知(母平均μが既知)</th>
-    <th style="text-align:left;">母分散σを区間推定</th>
-    <th style="text-align:left;font-size: 15px;">統計量 $T=\sum_{i=1}^{k} {\large(\frac{X_i-\mu}{\sigma})^2}$は自由度nの$\chi^2$分布に従う</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">母平均未知(母平均μが未知)</th>
-    <th style="text-align:left;">母分散σを区間推定</th>
-    <th style="text-align:left;font-size: 15px;">統計量 $T=\sum_{i=1}^{k}  {\large(\frac{X_i-\mu}{\sigma})^2}$は自由度n-1の$\chi^2$分布に従う</th>
-  </tr></p>
 <table>
+  <tbody><tr>
+    <th style="text-align: left;">条件</th>
+    <th style="text-align: left;">何を区間推定するか？</th>
+    <th style="text-align: left;">統計量Tが従う分布</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">母平均既知(母平均μが既知)</th>
+    <th style="text-align: left;">母分散σを区間推定</th>
+    <th style="text-align: left; font-size: 15px;">統計量 $T=\sum_{i=1}^{k} {\large(\frac{X_i-\mu}{\sigma})^2}$は自由度nの$\chi^2$分布に従う</th>
+  </tr>
+  <tr>
+    <th style="text-align: left;">母平均未知(母平均μが未知)</th>
+    <th style="text-align: left;">母分散σを区間推定</th>
+    <th style="text-align: left; font-size: 15px;">統計量 $T=\sum_{i=1}^{k}  {\large(\frac{X_i-\mu}{\sigma})^2}$は自由度n-1の$\chi^2$分布に従う</th>
+  </tr>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13568,15 +13744,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#27604;&#29575;&#12398;&#21306;&#38291;&#25512;&#23450;">&#27597;&#27604;&#29575;&#12398;&#21306;&#38291;&#25512;&#23450;<a class="anchor-link" href="#&#27597;&#27604;&#29575;&#12398;&#21306;&#38291;&#25512;&#23450;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[20],2018/06[22],2017/11[27]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">2018/11[20],2018/06[22],2017/11[27]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13585,47 +13761,47 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th width="200" style="text-align:left;">手順</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">標本比率$\LARGE{\widehat{p}}$を求める</th>
-    <th style="text-align:left;font-size: 15px;">成功回数Xを試行回数nで割って求める。${\large\widehat{p}=\displaystyle \frac{X}{n}}$</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">標本比率$\LARGE{\widehat{p}}$を求める</th>
+    <th style="text-align: left; font-size: 15px;">成功回数Xを試行回数nで割って求める。${\large\widehat{p}=\displaystyle \frac{X}{n}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">成功回数を標準化する</th>
-    <th style="text-align:left;font-size: 15px;">十分大きなnに対して $B(n,p)$ は正規分布 $N(np,np(1-p))$に近似できる。(ラプラスの定理)<br>よって成功回数Xが二項分布$B(n,p)$に従う場合、Xを標準化したZは$N(0,1)$に従う。<br>$\LARGE{Z=\frac{X-μ}{σ}=\frac{X-np}{\sqrt{np(1-p)}}}$</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">成功回数を標準化する</th>
+    <th style="text-align: left; font-size: 15px;">十分大きなnに対して $B(n,p)$ は正規分布 $N(np,np(1-p))$に近似できる。(ラプラスの定理)<br>よって成功回数Xが二項分布$B(n,p)$に従う場合、Xを標準化したZは$N(0,1)$に従う。<br>$\LARGE{Z=\frac{X-μ}{σ}=\frac{X-np}{\sqrt{np(1-p)}}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">標準化成功回数を<br>標本比率で置換</th>
-    <th style="text-align:left;font-size: 15px;">$\LARGE{Z=\frac{X-np}{\sqrt{np(1-p)}}=\frac{\frac{1}{n}}{\frac{1}{n}} \times \frac{X-np}{\sqrt{np(1-p)}} = \frac{\frac{X}{n}-p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{\widehat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}}$</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">標準化成功回数を<br>標本比率で置換</th>
+    <th style="text-align: left; font-size: 15px;">$\LARGE{Z=\frac{X-np}{\sqrt{np(1-p)}}=\frac{\frac{1}{n}}{\frac{1}{n}} \times \frac{X-np}{\sqrt{np(1-p)}} = \frac{\frac{X}{n}-p}{\sqrt{\frac{p(1-p)}{n}}} = \frac{\widehat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">信頼区間を設定</th>
-    <th style="text-align:left;font-size: 15px;">$(1-\alpha)(=100(1-\alpha)\%)$</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">信頼区間を設定</th>
+    <th style="text-align: left; font-size: 15px;">$(1-\alpha)(=100(1-\alpha)\%)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">Zの範囲</th>
-    <th style="text-align:left;font-size: 15px;">$\LARGE{-z_{\alpha/2}} \leq {\frac{\widehat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}} \leq z_{\alpha/2} $<br>$\large{z_{\alpha/2}}$は正規分布における上側確率が$\alpha/2$となる値。有意水準が0.05の場合はP値が0.025となる1.96が$\large{z_{\alpha/2}}$の値</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">Zの範囲</th>
+    <th style="text-align: left; font-size: 15px;">$\LARGE{-z_{\alpha/2}} \leq {\frac{\widehat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}} \leq z_{\alpha/2} $<br>$\large{z_{\alpha/2}}$は正規分布における上側確率が$\alpha/2$となる値。有意水準が0.05の場合はP値が0.025となる1.96が$\large{z_{\alpha/2}}$の値</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">$\sqrt{\frac{p(1-p)}{n}}$のpを変更</th>
-    <th style="text-align:left;font-size: 15px;">nが十分大きい時に$\widehat{p}$は$p$に近似するため、<br>$\LARGE{-z_{\alpha/2}} \leq {\frac{\widehat{p}-p}{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}}} \leq z_{\alpha/2} $</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">$\sqrt{\frac{p(1-p)}{n}}$のpを変更</th>
+    <th style="text-align: left; font-size: 15px;">nが十分大きい時に$\widehat{p}$は$p$に近似するため、<br>$\LARGE{-z_{\alpha/2}} \leq {\frac{\widehat{p}-p}{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}}} \leq z_{\alpha/2} $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">07</th>
-    <th style="text-align:left;">母比率を区間推定する</th>
-    <th style="text-align:left;font-size: 15px;">$\LARGE{\widehat{p}-z_{\frac{\alpha}{2}} \cdot{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}} \leq p \leq \widehat{p} + z_{\frac{\alpha}{2}}  \cdot{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}} }$</th>
+    <th style="text-align: left;">07</th>
+    <th style="text-align: left;">母比率を区間推定する</th>
+    <th style="text-align: left; font-size: 15px;">$\LARGE{\widehat{p}-z_{\frac{\alpha}{2}} \cdot{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}} \leq p \leq \widehat{p} + z_{\frac{\alpha}{2}}  \cdot{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}} }$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13634,15 +13810,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#27604;&#29575;&#12398;&#24046;&#12398;&#21306;&#38291;&#25512;&#23450;">&#27597;&#27604;&#29575;&#12398;&#24046;&#12398;&#21306;&#38291;&#25512;&#23450;<a class="anchor-link" href="#&#27597;&#27604;&#29575;&#12398;&#24046;&#12398;&#21306;&#38291;&#25512;&#23450;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2017/11[28]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2017/11[28]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13651,52 +13827,52 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th width="200" style="text-align:left;">手順</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">標本比率を求める</th>
-    <th style="text-align:left;font-size: 15px;">${\large\widehat{p_{1}}=\frac{X_{1}}{n_{1}}} \,\,\,\,\,\,\,\, {\large\widehat{p_{2}}=\frac{X_{2}}{n_{2}}}$</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">標本比率を求める</th>
+    <th style="text-align: left; font-size: 15px;">${\large\widehat{p_{1}}=\frac{X_{1}}{n_{1}}} \,\,\,\,\,\,\,\, {\large\widehat{p_{2}}=\frac{X_{2}}{n_{2}}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">正規分布へ近似</th>
-    <th style="text-align:left;font-size: 15px;">$X$が$B(n,p)$に従う時、十分大きなnに対して$\large{\widehat{p}}$は近似的に$\large{N(p, \frac{p(1-p)}{n})}$に従う。</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">正規分布へ近似</th>
+    <th style="text-align: left; font-size: 15px;">$X$が$B(n,p)$に従う時、十分大きなnに対して$\large{\widehat{p}}$は近似的に$\large{N(p, \frac{p(1-p)}{n})}$に従う。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">正規分布の差の再生性</th>
-    <th style="text-align:left;font-size: 15px;">$ \large{\widehat{p_1}-\widehat{p_2} \sim N \left( p_1-p_2, \frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}  \right) }$</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">正規分布の差の再生性</th>
+    <th style="text-align: left; font-size: 15px;">$ \large{\widehat{p_1}-\widehat{p_2} \sim N \left( p_1-p_2, \frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}  \right) }$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">信頼区間を設定</th>
-    <th style="text-align:left;font-size: 15px;">$(1-\alpha)(=100(1-\alpha)\%)$</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">信頼区間を設定</th>
+    <th style="text-align: left; font-size: 15px;">$(1-\alpha)(=100(1-\alpha)\%)$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">Zの範囲</th>
-    <th style="text-align:left;font-size: 15px;">$\LARGE{-z_{\alpha/2}} \leq {\frac{p_{1}-p_{2}}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}}} \leq z_{\alpha/2} $<br>$\large{z_{\alpha/2}}$は正規分布における上側確率が$\alpha/2$となる値。有意水準が0.05の場合はP値が0.025となる1.96が$\large{z_{\alpha/2}}$の値</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">Zの範囲</th>
+    <th style="text-align: left; font-size: 15px;">$\LARGE{-z_{\alpha/2}} \leq {\frac{p_{1}-p_{2}}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}}} \leq z_{\alpha/2} $<br>$\large{z_{\alpha/2}}$は正規分布における上側確率が$\alpha/2$となる値。有意水準が0.05の場合はP値が0.025となる1.96が$\large{z_{\alpha/2}}$の値</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">分母のpを変更</th>
-    <th style="text-align:left;font-size: 15px;">nが十分大きい時に $\widehat{p_1}$ は $p_{1}$ に、 $\widehat{p_2}$ は $p_{2}$ に近似するため、<br>$\LARGE{-z_{\alpha/2}} \leq {\frac{p_{1}-p_{2}}{\sqrt{\frac{\widehat{p_1}(1-\widehat{p_1})}{n_1}+\frac{\widehat{p_2} (1-\widehat{p_2} )}{n_2}}}} \leq z_{\alpha/2} $</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">分母のpを変更</th>
+    <th style="text-align: left; font-size: 15px;">nが十分大きい時に $\widehat{p_1}$ は $p_{1}$ に、 $\widehat{p_2}$ は $p_{2}$ に近似するため、<br>$\LARGE{-z_{\alpha/2}} \leq {\frac{p_{1}-p_{2}}{\sqrt{\frac{\widehat{p_1}(1-\widehat{p_1})}{n_1}+\frac{\widehat{p_2} (1-\widehat{p_2} )}{n_2}}}} \leq z_{\alpha/2} $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">07</th>
-    <th style="text-align:left;">母比率の差を区間推定する</th>
-    <th style="text-align:left;font-size: 15px;">$\LARGE{  (\widehat{p_1}-\widehat{p_2})-z_{\frac{\alpha}{2}} \times \sqrt{\frac{\widehat{p_1}(1-\widehat{p_1})}{n_1}+\frac{\widehat{p_2}(1-\widehat{p_2})}{n_2}} \leq p_1-p_2 \leq (\widehat{p_1}-\widehat{p_2})+z_{\frac{\alpha}{2}} \times \sqrt{\frac{\widehat{p_1}(1-\widehat{p_1})}{n_1}+\frac{\widehat{p_2}(1-\widehat{p_2})}{n_2}} }$</th>
+    <th style="text-align: left;">07</th>
+    <th style="text-align: left;">母比率の差を区間推定する</th>
+    <th style="text-align: left; font-size: 15px;">$\LARGE{  (\widehat{p_1}-\widehat{p_2})-z_{\frac{\alpha}{2}} \times \sqrt{\frac{\widehat{p_1}(1-\widehat{p_1})}{n_1}+\frac{\widehat{p_2}(1-\widehat{p_2})}{n_2}} \leq p_1-p_2 \leq (\widehat{p_1}-\widehat{p_2})+z_{\frac{\alpha}{2}} \times \sqrt{\frac{\widehat{p_1}(1-\widehat{p_1})}{n_1}+\frac{\widehat{p_2}(1-\widehat{p_2})}{n_2}} }$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">09</th>
-    <th style="text-align:left;">区間推定が0を跨いでいないか確認</th>
-    <th style="text-align:left;font-size: 15px;">0を跨いでいない場合は、有意水準で割合が変化した(0より有意に大きい)と言える</th>
+    <th style="text-align: left;">09</th>
+    <th style="text-align: left;">区間推定が0を跨いでいないか確認</th>
+    <th style="text-align: left; font-size: 15px;">0を跨いでいない場合は、有意水準で割合が変化した(0より有意に大きい)と言える</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13713,15 +13889,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[23],2018/06[26,27],2017/11[29]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">2018/11[23],2018/06[26,27],2017/11[29]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13730,59 +13906,59 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">意味</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">意味</th>
   </tr>
   <tr>
-    <th style="text-align:left;">帰無仮説</th>
-    <th style="text-align:left;">検定で最初に立てられる仮説。これが棄却されることにより、対立仮説を結論とする。$H_0$と記される。</th>
+    <th style="text-align: left;">帰無仮説</th>
+    <th style="text-align: left;">検定で最初に立てられる仮説。これが棄却されることにより、対立仮説を結論とする。$H_0$と記される。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">対立仮説</th>
-    <th style="text-align:left;">本来証明したい仮説。帰無仮説が棄却された時に採択される仮説。$H_1$と記される。</th>
+    <th style="text-align: left;">対立仮説</th>
+    <th style="text-align: left;">本来証明したい仮説。帰無仮説が棄却された時に採択される仮説。$H_1$と記される。</th>
   </tr>
    <tr>
-    <th style="text-align:left;">統計量</th>
-    <th style="text-align:left;">一定の確率法則に従っていろいろな値をとる確率変数</th>
+    <th style="text-align: left;">統計量</th>
+    <th style="text-align: left;">一定の確率法則に従っていろいろな値をとる確率変数</th>
   </tr>
    <tr>
-    <th style="text-align:left;">P値</th>
-    <th style="text-align:left;">帰無仮説が正しいとした仮定とき、観測した事象よりも極端なことが起こる確率。有意水準と比較する。1を超える事はない。</th>
+    <th style="text-align: left;">P値</th>
+    <th style="text-align: left;">帰無仮説が正しいとした仮定とき、観測した事象よりも極端なことが起こる確率。有意水準と比較する。1を超える事はない。</th>
   </tr>
    <tr>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;">第一種過誤を犯す確率。αと表示する。P値が有意水準よりも小さい場合は帰無仮説は棄却される。0.05と設定されることが多い</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left;">第一種過誤を犯す確率。αと表示する。P値が有意水準よりも小さい場合は帰無仮説は棄却される。0.05と設定されることが多い</th>
   </tr>
    <tr>
-    <th style="text-align:left;">第一種過誤</th>
-    <th style="text-align:left;">偽陽性やαとも呼ばれる。帰無仮説が実際には真であるのに棄却してしまう過誤</th>
+    <th style="text-align: left;">第一種過誤</th>
+    <th style="text-align: left;">偽陽性やαとも呼ばれる。帰無仮説が実際には真であるのに棄却してしまう過誤</th>
   </tr>
     <tr>
-    <th style="text-align:left;">第二種過誤</th>
-    <th style="text-align:left;">偽陰性やβとも呼ばれる。対立仮説が実際には真であるのに帰無仮説を採用してしまう過誤</th>
+    <th style="text-align: left;">第二種過誤</th>
+    <th style="text-align: left;">偽陰性やβとも呼ばれる。対立仮説が実際には真であるのに帰無仮説を採用してしまう過誤</th>
   </tr>
   <tr>
-    <th style="text-align:left;">検出力</th>
-    <th style="text-align:left;">1-βで求める。帰無仮説が正しくない時に、正しく帰無仮説を棄却する確率。</th>
+    <th style="text-align: left;">検出力</th>
+    <th style="text-align: left;">1-βで求める。帰無仮説が正しくない時に、正しく帰無仮説を棄却する確率。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">対応のあるデータ (反復測定)</th>
-    <th style="text-align:left;">条件を変えても同じ個体群で繰り返し測定したデータ</th>
+    <th style="text-align: left;">対応のあるデータ (反復測定)</th>
+    <th style="text-align: left;">条件を変えても同じ個体群で繰り返し測定したデータ</th>
   </tr>
   <tr>
-    <th style="text-align:left;">対応のないデータ</th>
-    <th style="text-align:left;">測定した個体群が異なるデータ</th>
+    <th style="text-align: left;">対応のないデータ</th>
+    <th style="text-align: left;">測定した個体群が異なるデータ</th>
   </tr>
   <tr>
-    <th style="text-align:left;">片側検定</th>
-    <th style="text-align:left;">帰無仮説μ=0に対して、μ<0やμ>0を片側対立仮説とよび、この対立仮説を用いた検定</th>
+    <th style="text-align: left;">片側検定</th>
+    <th style="text-align: left;">帰無仮説μ=0に対して、μ&lt;0やμ&gt;0を片側対立仮説とよび、この対立仮説を用いた検定</th>
   </tr>
   <tr>
-    <th style="text-align:left;">両側検定</th>
-    <th style="text-align:left;">帰無仮説μ=0に対して、μ≠0を両側対立仮説とよび、この対立仮説を用いた検定</th>
+    <th style="text-align: left;">両側検定</th>
+    <th style="text-align: left;">帰無仮説μ=0に対して、μ≠0を両側対立仮説とよび、この対立仮説を用いた検定</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13791,14 +13967,14 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#24179;&#22343;&#12398;&#26908;&#23450;&#65288;&#20001;&#20596;t&#26908;&#23450;&#65289;">&#27597;&#24179;&#22343;&#12398;&#26908;&#23450;&#65288;&#20001;&#20596;t&#26908;&#23450;&#65289;<a class="anchor-link" href="#&#27597;&#24179;&#22343;&#12398;&#26908;&#23450;&#65288;&#20001;&#20596;t&#26908;&#23450;&#65289;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
-    <th style="text-align:left;">2018/11[21]</th>
-    <th style="text-align:left;">25%</th>
+    <tr><th style="text-align: left;">2018/11[21]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13807,37 +13983,37 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th  width="450" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：平均は○○である</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：平均は○○である</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：平均は○○ではない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：平均は○○ではない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">統計量Tを算出</th>
-    <th style="text-align:left;font-size: 15px;">統計量 $T={\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{s^2}{n}}}}}$</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">統計量Tを算出</th>
+    <th style="text-align: left; font-size: 15px;">統計量 $T={\large\frac{\bar{x}-μ}{\sqrt{{\LARGE\frac{s^2}{n}}}}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">t分布表で有意水準か確認</th>
-    <th style="text-align:left;">統計量Tの値が、t分布の自由度「n-1」で有意水準「0.025」(両側検定なので0.5の半分)の値より大きい場合は、帰無仮説を棄却</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">t分布表で有意水準か確認</th>
+    <th style="text-align: left;">統計量Tの値が、t分布の自由度「n-1」で有意水準「0.025」(両側検定なので0.5の半分)の値より大きい場合は、帰無仮説を棄却</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13846,25 +14022,25 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#24179;&#22343;&#12398;&#24046;&#12398;&#26908;&#23450;(2&#27161;&#26412;t&#26908;&#23450;)">&#27597;&#24179;&#22343;&#12398;&#24046;&#12398;&#26908;&#23450;(2&#27161;&#26412;t&#26908;&#23450;)<a class="anchor-link" href="#&#27597;&#24179;&#22343;&#12398;&#24046;&#12398;&#26908;&#23450;(2&#27161;&#26412;t&#26908;&#23450;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">標本が同一か？</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">標本が同一か？</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">母分散が等しいと仮定した2標本のt検定</th>
-    <th style="text-align:left;">標本が同一である(対応のあるデータ)</th>
-    <th style="text-align:left;"></th>
-    <th style="text-align:left;"></th>
+    <th style="text-align: left;">母分散が等しいと仮定した2標本のt検定</th>
+    <th style="text-align: left;">標本が同一である(対応のあるデータ)</th>
+    <th style="text-align: left;"></th>
+    <th style="text-align: left;"></th>
   </tr>
   <tr>
-    <th style="text-align:left;">母分散が等しくない仮定した2標本のt検定</th>
-    <th style="text-align:left;">標本が同一でない(対応のないデータ)</th>
-    <th style="text-align:left;">2018/06[24]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">母分散が等しくない仮定した2標本のt検定</th>
+    <th style="text-align: left;">標本が同一でない(対応のないデータ)</th>
+    <th style="text-align: left;">2018/06[24]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13873,22 +14049,22 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h5><table>
-  <tr>
-    <th style="text-align:left;">名前</th>
-    <th style="text-align:left;">意味</th>
-    <th style="text-align:left;">例</th>
+  <tbody><tr>
+    <th style="text-align: left;">名前</th>
+    <th style="text-align: left;">意味</th>
+    <th style="text-align: left;">例</th>
   </tr>
   <tr>
-    <th style="text-align:left;">対応のあるデータ(標本が同一)</th>
-    <th style="text-align:left;">条件を変えても同じ個体群で繰り返し測定したデータ。(反復測定)</th>
-    <th style="text-align:left;">A、B、Cの3人について、10歳時と15歳時の身長を測定</th>
+    <th style="text-align: left;">対応のあるデータ(標本が同一)</th>
+    <th style="text-align: left;">条件を変えても同じ個体群で繰り返し測定したデータ。(反復測定)</th>
+    <th style="text-align: left;">A、B、Cの3人について、10歳時と15歳時の身長を測定</th>
   </tr>
   <tr>
-    <th style="text-align:left;">対応のないデータ(標本が同一でない)</th>
-    <th style="text-align:left;">それぞれの条件において測定した個体群が異なるデータ</th>
-    <th style="text-align:left;">10歳のA、B、Cの3人の身長と、15歳のD、E、Fの3人の身長を測定</th>
+    <th style="text-align: left;">対応のないデータ(標本が同一でない)</th>
+    <th style="text-align: left;">それぞれの条件において測定した個体群が異なるデータ</th>
+    <th style="text-align: left;">10歳のA、B、Cの3人の身長と、15歳のD、E、Fの3人の身長を測定</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13897,47 +14073,47 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="&#23550;&#24540;&#12398;&#12354;&#12427;&#12487;&#12540;&#12479;(&#27161;&#26412;&#12364;&#21516;&#19968;)&#12391;&#27597;&#20998;&#25955;&#12364;&#20998;&#12363;&#12427;&#22580;&#21512;">&#23550;&#24540;&#12398;&#12354;&#12427;&#12487;&#12540;&#12479;(&#27161;&#26412;&#12364;&#21516;&#19968;)&#12391;&#27597;&#20998;&#25955;&#12364;&#20998;&#12363;&#12427;&#22580;&#21512;<a class="anchor-link" href="#&#23550;&#24540;&#12398;&#12354;&#12427;&#12487;&#12540;&#12479;(&#27161;&#26412;&#12364;&#21516;&#19968;)&#12391;&#27597;&#20998;&#25955;&#12364;&#20998;&#12363;&#12427;&#22580;&#21512;">&#182;</a></h5><table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th width="750" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：母平均は等しい</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：母平均は等しい</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：母平均は等しくない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：母平均は等しくない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">それぞれの差の平均値を算出</th>
-    <th style="text-align:left;font-size: 20px;">$\overline{x_{d}}=E($1回目の観測値$\large{_{i}}$-2回目の観測値$\large{_{i}})$</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">それぞれの差の平均値を算出</th>
+    <th style="text-align: left; font-size: 20px;">$\overline{x_{d}}=E($1回目の観測値$\large{_{i}}$-2回目の観測値$\large{_{i}})$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">それぞれの差の不偏分散を算出</th>
-    <th style="text-align:left;font-size: 20px;">$S_{d}^2=\frac{1}{n - 1}\sum_{i = 1}^n {(観測値の差\large{_{i}} - \overline{x_{d}})^2}$</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">それぞれの差の不偏分散を算出</th>
+    <th style="text-align: left; font-size: 20px;">$S_{d}^2=\frac{1}{n - 1}\sum_{i = 1}^n {(観測値の差\large{_{i}} - \overline{x_{d}})^2}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">統計量Tを算出</th>
-    <th style="text-align:left;font-size: 20px;">$T=\frac{\large{\overline{x_{d}}}-\mu_{d}}{\large{\sqrt{\frac{\LARGE{S}_{d}^2}{\LARGE{n}}}}}=\frac{\large{\overline{x_{d}}}}{\large{\sqrt{\frac{\LARGE{S}_{d}^2}{\LARGE{n}}}}}$<br>帰無仮説「母平均が等しい」が正しいとすると$\mu_{d}=0$</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">統計量Tを算出</th>
+    <th style="text-align: left; font-size: 20px;">$T=\frac{\large{\overline{x_{d}}}-\mu_{d}}{\large{\sqrt{\frac{\LARGE{S}_{d}^2}{\LARGE{n}}}}}=\frac{\large{\overline{x_{d}}}}{\large{\sqrt{\frac{\LARGE{S}_{d}^2}{\LARGE{n}}}}}$<br>帰無仮説「母平均が等しい」が正しいとすると$\mu_{d}=0$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">07</th>
-    <th style="text-align:left;">t分布表で有意水準か確認</th>
-    <th style="text-align:left;">統計量Tの値が、t分布の自由度「$n-1$」で有意水準「0.025」(両側検定なので0.5の半分)の値より大きい場合は、帰無仮説を棄却</th>
+    <th style="text-align: left;">07</th>
+    <th style="text-align: left;">t分布表で有意水準か確認</th>
+    <th style="text-align: left;">統計量Tの値が、t分布の自由度「$n-1$」で有意水準「0.025」(両側検定なので0.5の半分)の値より大きい場合は、帰無仮説を棄却</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13946,42 +14122,42 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="&#23550;&#24540;&#12398;&#12394;&#12356;&#12487;&#12540;&#12479;(&#27161;&#26412;&#12364;&#21516;&#19968;&#12391;&#12394;&#12356;)&#12391;&#27597;&#20998;&#25955;&#12364;&#20998;&#12363;&#12425;&#12394;&#12356;&#22580;&#21512;">&#23550;&#24540;&#12398;&#12394;&#12356;&#12487;&#12540;&#12479;(&#27161;&#26412;&#12364;&#21516;&#19968;&#12391;&#12394;&#12356;)&#12391;&#27597;&#20998;&#25955;&#12364;&#20998;&#12363;&#12425;&#12394;&#12356;&#22580;&#21512;<a class="anchor-link" href="#&#23550;&#24540;&#12398;&#12394;&#12356;&#12487;&#12540;&#12479;(&#27161;&#26412;&#12364;&#21516;&#19968;&#12391;&#12394;&#12356;)&#12391;&#27597;&#20998;&#25955;&#12364;&#20998;&#12363;&#12425;&#12394;&#12356;&#22580;&#21512;">&#182;</a></h5><table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th width="750" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：母平均は等しい</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：母平均は等しい</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：母平均は等しくない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：母平均は等しくない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">プールされた分散を算出</th>
-    <th style="text-align:left;font-size: 20px;">$s_{p}^{2}=\large{\frac{(n_{1}-1) \times {s_{1}}^{2}+(n_{2}-1) \times {s_{2}}^{2}}{n_{1}+n_{2}-2}} $<br>${s_{1}^{2}}$：1群目の不偏分散、${s_{2}^{2}}$：2群目の不偏分散</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">プールされた分散を算出</th>
+    <th style="text-align: left; font-size: 20px;">$s_{p}^{2}=\large{\frac{(n_{1}-1) \times {s_{1}}^{2}+(n_{2}-1) \times {s_{2}}^{2}}{n_{1}+n_{2}-2}} $<br>${s_{1}^{2}}$：1群目の不偏分散、${s_{2}^{2}}$：2群目の不偏分散</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">統計量Tを算出</th>
-    <th style="text-align:left;font-size: 20px;">$T=\large{\frac{\overline{x}_{1}-\overline{x}_{2}-(\mu_1-\mu_2)}{\sqrt{s_{p}^{2}\left(\frac{1}{n_{1}}+\frac{1}{n_{2}}\right)}}=\frac{\overline{x}_{1}-\overline{x}_{2}}{\sqrt{s_{p}^{2}\left(\frac{1}{n_{1}}+\frac{1}{n_{2}}\right)}}}$<br>帰無仮説「母平均が等しい」が正しいとすると$(\mu_1-\mu_2)=0$</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">統計量Tを算出</th>
+    <th style="text-align: left; font-size: 20px;">$T=\large{\frac{\overline{x}_{1}-\overline{x}_{2}-(\mu_1-\mu_2)}{\sqrt{s_{p}^{2}\left(\frac{1}{n_{1}}+\frac{1}{n_{2}}\right)}}=\frac{\overline{x}_{1}-\overline{x}_{2}}{\sqrt{s_{p}^{2}\left(\frac{1}{n_{1}}+\frac{1}{n_{2}}\right)}}}$<br>帰無仮説「母平均が等しい」が正しいとすると$(\mu_1-\mu_2)=0$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">t分布表で有意水準か確認</th>
-    <th style="text-align:left;">統計量Tの値が、t分布の自由度「$n_{1}+n_{2}-2$」で有意水準「0.025」(両側検定なので0.5の半分)の値より大きい場合は、帰無仮説を棄却</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">t分布表で有意水準か確認</th>
+    <th style="text-align: left;">統計量Tの値が、t分布の自由度「$n_{1}+n_{2}-2$」で有意水準「0.025」(両側検定なので0.5の半分)の値より大きい場合は、帰無仮説を棄却</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -13991,15 +14167,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#29420;&#31435;&#24615;&#12398;&#26908;&#23450;(&#29255;&#20596;&#26908;&#23450;)">&#29420;&#31435;&#24615;&#12398;&#26908;&#23450;(&#29255;&#20596;&#26908;&#23450;)<a class="anchor-link" href="#&#29420;&#31435;&#24615;&#12398;&#26908;&#23450;(&#29255;&#20596;&#26908;&#23450;)">&#182;</a></h3><p>2つ以上の分類基準を持つクロス集計表で分類基準間に関連があるか、カイ二乗分布で検定。</p>
 <table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06[31,32,33],2017/06[28,29]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">2018/06[31,32,33],2017/06[28,29]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14008,42 +14184,42 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th width="200" style="text-align:left;">手順</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：分類基準間は独立である（関連がない）</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：分類基準間は独立である（関連がない）</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：分類基準間は独立ではない（関連がある）</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：分類基準間は独立ではない（関連がある）</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">理論値(期待度数)を算出</th>
-    <th style="text-align:left;font-size: 15px;">${\large{f_{i}}}$：i列目の度数合計、${\large{f_{j}}}$：j行目の度数合計、n：全度数合計 <br> <br> i列・j行目「理論値」= ${\large\displaystyle \frac{f_{i \cdot} \times f_{\cdot j}}{n}} $</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">理論値(期待度数)を算出</th>
+    <th style="text-align: left; font-size: 15px;">${\large{f_{i}}}$：i列目の度数合計、${\large{f_{j}}}$：j行目の度数合計、n：全度数合計 <br> <br> i列・j行目「理論値」= ${\large\displaystyle \frac{f_{i \cdot} \times f_{\cdot j}}{n}} $</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">カイ二乗統計量を算出</th>
-    <th style="text-align:left;font-size: 15px;">カイ二乗統計量=${\large Σ(\frac{([実測度数_{i}]-[期待度数_{i}])^2}{[期待度数_{i}]}})$</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">カイ二乗統計量を算出</th>
+    <th style="text-align: left; font-size: 15px;">カイ二乗統計量=${\large Σ(\frac{([実測度数_{i}]-[期待度数_{i}])^2}{[期待度数_{i}]}})$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">カイ二乗分布表で有意水準か確認</th>
-    <th style="text-align:left;">統計量の値が、カイ二乗分布の自由度「(m－1)×(n－1)」で有意水準「0.05」(片側検定なの)の値より大きい場合は、帰無仮説を棄却<br>縦がm行、横がn列</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">カイ二乗分布表で有意水準か確認</th>
+    <th style="text-align: left;">統計量の値が、カイ二乗分布の自由度「(m－1)×(n－1)」で有意水準「0.05」(片側検定なの)の値より大きい場合は、帰無仮説を棄却<br>縦がm行、横がn列</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14052,15 +14228,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#31561;&#20998;&#25955;&#12398;&#26908;&#23450;(F&#26908;&#23450;)">&#31561;&#20998;&#25955;&#12398;&#26908;&#23450;(F&#26908;&#23450;)<a class="anchor-link" href="#&#31561;&#20998;&#25955;&#12398;&#26908;&#23450;(F&#26908;&#23450;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[22],2018/06[34],2017/06[27]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">2018/11[22],2018/06[34],2017/06[27]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14069,37 +14245,37 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th  width="600" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：二つの分布は分散が等しい</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：二つの分布は分散が等しい</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：二つの分布は分散が等しくない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：二つの分布は分散が等しくない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">検定統計量Fを算出</th>
-    <th style="text-align:left;font-size: 15px;">$F={\LARGE\frac{s_{1}^{2}}{s_{2}^{2}}}$<br>${\large{s_{1}^{2}}}$：1群目の不偏分散、${\large{s_{2}^{2}}}$：2群目の不偏分散</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">検定統計量Fを算出</th>
+    <th style="text-align: left; font-size: 15px;">$F={\LARGE\frac{s_{1}^{2}}{s_{2}^{2}}}$<br>${\large{s_{1}^{2}}}$：1群目の不偏分散、${\large{s_{2}^{2}}}$：2群目の不偏分散</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">両側検定を行う</th>
-    <th style="text-align:left;font-size: 15px;">統計数値表から${\LARGE{F_{\frac{α}{2}}(m_{1}, m_{2})}}={\LARGE{F_{\frac{α}{2}}(n_{1}-1, n_{2}-1)}}$<br>が棄却域か確認する</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">両側検定を行う</th>
+    <th style="text-align: left; font-size: 15px;">統計数値表から${\LARGE{F_{\frac{α}{2}}(m_{1}, m_{2})}}={\LARGE{F_{\frac{α}{2}}(n_{1}-1, n_{2}-1)}}$<br>が棄却域か確認する</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14108,15 +14284,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#27604;&#29575;&#12398;&#26908;&#23450;-(&#20001;&#20596;&#26908;&#23450;)">&#27597;&#27604;&#29575;&#12398;&#26908;&#23450; (&#20001;&#20596;&#26908;&#23450;)<a class="anchor-link" href="#&#27597;&#27604;&#29575;&#12398;&#26908;&#23450;-(&#20001;&#20596;&#26908;&#23450;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[25]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/11[25]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14125,37 +14301,37 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th  width="450" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：発生確率は○○である</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：発生確率は○○である</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：発生確率は○○ではない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：発生確率は○○ではない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">統計量Zを算出</th>
-    <th style="text-align:left;font-size: 20px;">統計量 $\large{Z} = \frac{\LARGE{\widehat{p}-p_0}}{\LARGE{\sqrt{\frac{p_0(1-p_0)}{n}}}}$<br>$\widehat{p}=\displaystyle \frac{X}{n}\,\,\,\, {p}_0=母比率$</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">統計量Zを算出</th>
+    <th style="text-align: left; font-size: 20px;">統計量 $\large{Z} = \frac{\LARGE{\widehat{p}-p_0}}{\LARGE{\sqrt{\frac{p_0(1-p_0)}{n}}}}$<br>$\widehat{p}=\displaystyle \frac{X}{n}\,\,\,\, {p}_0=母比率$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">正規分布で有意水準か確認</th>
-    <th style="text-align:left;">統計量Zの値より、正規分布で確率を確認し、有意水準(両側検定なので0.025)より大きい場合は、帰無仮説を棄却</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">正規分布で有意水準か確認</th>
+    <th style="text-align: left;">統計量Zの値より、正規分布で確率を確認し、有意水準(両側検定なので0.025)より大きい場合は、帰無仮説を棄却</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14164,15 +14340,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#27597;&#27604;&#29575;&#12398;&#24046;&#12398;&#26908;&#23450;-(&#20001;&#20596;&#26908;&#23450;)">&#27597;&#27604;&#29575;&#12398;&#24046;&#12398;&#26908;&#23450; (&#20001;&#20596;&#26908;&#23450;)<a class="anchor-link" href="#&#27597;&#27604;&#29575;&#12398;&#24046;&#12398;&#26908;&#23450;-(&#20001;&#20596;&#26908;&#23450;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[26]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/11[26]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14181,42 +14357,42 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th  width="500" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：母比率は等しい</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：母比率は等しい</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：母比率は等しくない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：母比率は等しくない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">プールした標本比率 $\widehat{p}$を算出</th>
-    <th style="text-align:left;font-size: 20px;">プールした標本比率 $\widehat{p}=\frac{n_1\widehat{p}_1+n_2\widehat{p}_2}{n_1+n_2}$<br>$\widehat{p}_1$=1郡目の標本比率 $\,\,\,\, \widehat{p}_2$=2郡目の標本比率<br>$n_1$=1郡目のサンプル数 $\,\,\,\, n_2$=2郡目のサンプル数 <br></th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">プールした標本比率 $\widehat{p}$を算出</th>
+    <th style="text-align: left; font-size: 20px;">プールした標本比率 $\widehat{p}=\frac{n_1\widehat{p}_1+n_2\widehat{p}_2}{n_1+n_2}$<br>$\widehat{p}_1$=1郡目の標本比率 $\,\,\,\, \widehat{p}_2$=2郡目の標本比率<br>$n_1$=1郡目のサンプル数 $\,\,\,\, n_2$=2郡目のサンプル数 <br></th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">統計量Zを算出</th>
-    <th style="text-align:left;font-size: 20px;">統計量 $\large{Z}=\frac{\widehat{p}_{1}-\widehat{p}_{2}}{\sqrt{\widehat{p}(1-\widehat{p}) \left(\frac{1}{n_1}+\frac{1}{n_2} \right)}}$</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">統計量Zを算出</th>
+    <th style="text-align: left; font-size: 20px;">統計量 $\large{Z}=\frac{\widehat{p}_{1}-\widehat{p}_{2}}{\sqrt{\widehat{p}(1-\widehat{p}) \left(\frac{1}{n_1}+\frac{1}{n_2} \right)}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">正規分布で有意水準か確認</th>
-    <th style="text-align:left;">統計量Zの値より、正規分布でP(Z)を確認し、両側検定なのでP(Z)を二倍した値が、有意水準より大きい場合は、帰無仮説を棄却</th>
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">正規分布で有意水準か確認</th>
+    <th style="text-align: left;">統計量Zの値より、正規分布でP(Z)を確認し、両側検定なのでP(Z)を二倍した値が、有意水準より大きい場合は、帰無仮説を棄却</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14225,15 +14401,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#36969;&#21512;&#24230;&#12398;&#26908;&#23450;-(&#29255;&#20596;&#26908;&#23450;)">&#36969;&#21512;&#24230;&#12398;&#26908;&#23450; (&#29255;&#20596;&#26908;&#23450;)<a class="anchor-link" href="#&#36969;&#21512;&#24230;&#12398;&#26908;&#23450;-(&#29255;&#20596;&#26908;&#23450;)">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[27,28],2017/11[30,31]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">2018/11[27,28],2017/11[30,31]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14242,43 +14418,43 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-    <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th  width="530" style="text-align:left;">説明</th>
+    <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：理論値と実測値は等しい</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：理論値と実測値は等しい</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：理論値と実測値は等しくない</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：理論値と実測値は等しくない</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">クロス集計表の各列のズレを算出</th>
-    <th style="text-align:left;">「理論値」からの「実測値」のズレを2乗したものを、「理論値」の値で割る</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">クロス集計表の各列のズレを算出</th>
+    <th style="text-align: left;">「理論値」からの「実測値」のズレを2乗したものを、「理論値」の値で割る</th>
   </tr>
    <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">統計量 $\large{\chi^{2}}$を算出</th>
-    <th style="text-align:left;">ズレの和をとる。カイ二乗統計量${\LARGE= Σ\frac{([実測値_{i}]-[理論値_{i}])^2}{[理論値_{i}]}}$</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">統計量 $\large{\chi^{2}}$を算出</th>
+    <th style="text-align: left;">ズレの和をとる。カイ二乗統計量${\LARGE= Σ\frac{([実測値_{i}]-[理論値_{i}])^2}{[理論値_{i}]}}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">06</th>
-    <th style="text-align:left;">カイ二乗分布で有意水準か確認</th>
-    <th style="text-align:left;">統計量$\large{\chi^{2}}$の値が、自由度「カテゴリ数n-1」で有意水準「0.05」の値より大きい場合は、<br>帰無仮説を棄却  
+    <th style="text-align: left;">06</th>
+    <th style="text-align: left;">カイ二乗分布で有意水準か確認</th>
+    <th style="text-align: left;">統計量$\large{\chi^{2}}$の値が、自由度「カテゴリ数n-1」で有意水準「0.05」の値より大きい場合は、<br>帰無仮説を棄却  
     ※nはサンプル数ではなくカテゴリ数</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14303,15 +14479,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#19968;&#33324;&#29992;&#35486;">&#19968;&#33324;&#29992;&#35486;<a class="anchor-link" href="#&#19968;&#33324;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">項目</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">項目</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[32,33,34],2017/11[5,6,25],2017/06[10,11]</th>
-    <th style="text-align:left;">75%</th>
+    <th style="text-align: left;">2018/11[32,33,34],2017/11[5,6,25],2017/06[10,11]</th>
+    <th style="text-align: left;">75%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14320,79 +14496,79 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th  width="150" style="text-align:left;">用語</th>
-    <th style="text-align:left;">意味</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">意味</th>
   </tr>
   <tr>
-    <th style="text-align:left;">P-値</th>
-    <th style="text-align:left;">説明変数が不要か判断する。「パラメータの真の値は0である」という仮説の検定結果で0.05より小さいと帰無仮説で棄却される。<br>値が大きいとモデルに入れても効果がない。1以下の値をとる。</th>
+    <th style="text-align: left;">P-値</th>
+    <th style="text-align: left;">説明変数が不要か判断する。「パラメータの真の値は0である」という仮説の検定結果で0.05より小さいと帰無仮説で棄却される。<br>値が大きいとモデルに入れても効果がない。1以下の値をとる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">t値</th>
-    <th style="text-align:left;">その説明変数をモデルに使用する方が良いか表す。2以上なら使用するべきで、1未満なら使用しない方が良い。<br>1以上で2未満なら分析者が判断する。$\LARGE{t値=偏回帰係数➗標準誤差} \,\,\,\,\,\,\,$で算出できる。</th>
+    <th style="text-align: left;">t値</th>
+    <th style="text-align: left;">その説明変数をモデルに使用する方が良いか表す。2以上なら使用するべきで、1未満なら使用しない方が良い。<br>1以上で2未満なら分析者が判断する。$\LARGE{t値=偏回帰係数➗標準誤差} \,\,\,\,\,\,\,$で算出できる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">回帰式</th>
-    <th style="text-align:left;">$\large{y=\beta_{0}+\beta_{1} x}\,\,\,\,\,\beta_{0}$は切片を表す。$\large{\beta_{0}}$は偏回帰係数を表す。</th>
+    <th style="text-align: left;">回帰式</th>
+    <th style="text-align: left;">$\large{y=\beta_{0}+\beta_{1} x}\,\,\,\,\,\beta_{0}$は切片を表す。$\large{\beta_{0}}$は偏回帰係数を表す。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">決定係数</th>
-    <th style="text-align:left;">$\large{R^{2}}$で表される。データに対する、推定された回帰式の当てはまりの良さ（度合い）を表す。<br>0から1の間の値を取り、1に近いほど良い。</th>
+    <th style="text-align: left;">決定係数</th>
+    <th style="text-align: left;">$\large{R^{2}}$で表される。データに対する、推定された回帰式の当てはまりの良さ（度合い）を表す。<br>0から1の間の値を取り、1に近いほど良い。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">誤差</th>
-    <th style="text-align:left;">真の回帰式から算出される値と実際のデータとの差。計算で求められない。</th>
+    <th style="text-align: left;">誤差</th>
+    <th style="text-align: left;">真の回帰式から算出される値と実際のデータとの差。計算で求められない。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">最小二乗法</th>
-    <th style="text-align:left;">モデル関数を$\large{y=f(x)}$とする時、$\large{\sum_{i=1}^n\{y_i-f(x)\}^2}$が最小となる$\large{f(x)}$を求める事</th>
+    <th style="text-align: left;">最小二乗法</th>
+    <th style="text-align: left;">モデル関数を$\large{y=f(x)}$とする時、$\large{\sum_{i=1}^n\{y_i-f(x)\}^2}$が最小となる$\large{f(x)}$を求める事</th>
   </tr>
   <tr>
-    <th style="text-align:left;">残差</th>
-    <th style="text-align:left;">実際のデータを用いて推定された回帰式から算出される値と実際のデータとの差。計算で求められる。</th>
+    <th style="text-align: left;">残差</th>
+    <th style="text-align: left;">実際のデータを用いて推定された回帰式から算出される値と実際のデータとの差。計算で求められる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">残差標準誤差</th>
-    <th style="text-align:left;">$\large{残差標準誤差^2}=残差平方和/(サンプルの数-説明変数の数-1)$で算出する。</th>
+    <th style="text-align: left;">残差標準誤差</th>
+    <th style="text-align: left;">$\large{残差標準誤差^2}=残差平方和/(サンプルの数-説明変数の数-1)$で算出する。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">残差平方和</th>
-    <th style="text-align:left;">RSSで表される。残差の平方（二乗）の和</th>
+    <th style="text-align: left;">残差平方和</th>
+    <th style="text-align: left;">RSSで表される。残差の平方（二乗）の和</th>
   </tr>
   <tr>
-    <th style="text-align:left;">自由度調整済み決定係数</th>
-    <th style="text-align:left;">$\large{R_{f}^{2}}$で表される。決定係数は説明変数の数が増えるほど1に近づくという性質を持っているため、説明変数の数が多い場合には補正する。<br>値が大きいほど良い。</th>
+    <th style="text-align: left;">自由度調整済み決定係数</th>
+    <th style="text-align: left;">$\large{R_{f}^{2}}$で表される。決定係数は説明変数の数が増えるほど1に近づくという性質を持っているため、説明変数の数が多い場合には補正する。<br>値が大きいほど良い。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">重相関係数</th>
-    <th style="text-align:left;">$\large{R}$で表される。実際に観測された目的変数の値と、重回帰式をあてはめて計算した推定値との相関係数<br>0から1の間の値を取り、1に近いほど分析の精度は高い。</th>
+    <th style="text-align: left;">重相関係数</th>
+    <th style="text-align: left;">$\large{R}$で表される。実際に観測された目的変数の値と、重回帰式をあてはめて計算した推定値との相関係数<br>0から1の間の値を取り、1に近いほど分析の精度は高い。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">切片</th>
-    <th style="text-align:left;">y=ax+bとモデルがある場合、aの値。$\LARGE{[Yの平均] - [偏回帰係数b] ＊ [Xの平均]}$で算出できる。</th>
+    <th style="text-align: left;">切片</th>
+    <th style="text-align: left;">y=ax+bとモデルがある場合、aの値。$\LARGE{[Yの平均] - [偏回帰係数b] ＊ [Xの平均]}$で算出できる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">説明変数、特徴量</th>
-    <th style="text-align:left;">y=ax+bとモデルがある場合、予測で使用する変数(X)の事</th>
+    <th style="text-align: left;">説明変数、特徴量</th>
+    <th style="text-align: left;">y=ax+bとモデルがある場合、予測で使用する変数(X)の事</th>
   </tr>
   <tr>
-    <th style="text-align:left;">多重共線性</th>
-    <th style="text-align:left;">モデル内の一部の予測変数が他の予測変数と相関係数が高く、回帰係数の分散を増加させて不安定にする問題。</th>
+    <th style="text-align: left;">多重共線性</th>
+    <th style="text-align: left;">モデル内の一部の予測変数が他の予測変数と相関係数が高く、回帰係数の分散を増加させて不安定にする問題。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">偏回帰係数</th>
-    <th style="text-align:left;">y=ax+bとモデルがある場合、bの値。$\LARGE{\frac{XとYの共分散}{Xの分散}} \,\,\,\,\,\,\,$で算出できる。</th>
+    <th style="text-align: left;">偏回帰係数</th>
+    <th style="text-align: left;">y=ax+bとモデルがある場合、bの値。$\LARGE{\frac{XとYの共分散}{Xの分散}} \,\,\,\,\,\,\,$で算出できる。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">偏回帰係数の検定統計量</th>
-    <th style="text-align:left;">偏回帰係数=aかどうか検討する場合。$\large{T=}\LARGE{\frac{偏回帰係数-a}{標準誤差}}$<br>自由度が[サンプル数] - [説明変数個数] - 1　のt分布に従う。</th>
+    <th style="text-align: left;">偏回帰係数の検定統計量</th>
+    <th style="text-align: left;">偏回帰係数=aかどうか検討する場合。$\large{T=}\LARGE{\frac{偏回帰係数-a}{標準誤差}}$<br>自由度が[サンプル数] - [説明変数個数] - 1　のt分布に従う。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">目的変数、被説明変数</th>
-    <th style="text-align:left;">y=ax+bとモデルがある場合、予測したい変数(Y)の事。</th>
+    <th style="text-align: left;">目的変数、被説明変数</th>
+    <th style="text-align: left;">y=ax+bとモデルがある場合、予測したい変数(Y)の事。</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14401,15 +14577,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#32113;&#35336;&#12477;&#12501;&#12488;R&#12398;&#29992;&#35486;">&#32113;&#35336;&#12477;&#12501;&#12488;R&#12398;&#29992;&#35486;<a class="anchor-link" href="#&#32113;&#35336;&#12477;&#12501;&#12488;R&#12398;&#29992;&#35486;">&#182;</a></h3><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/11[29,30,31],2018/06[28,29,30],2017/11[24,26],2017/06[33,34,35]</th>
-    <th style="text-align:left;">100%</th>
+    <th style="text-align: left;">2018/11[29,30,31],2018/06[28,29,30],2017/11[24,26],2017/06[33,34,35]</th>
+    <th style="text-align: left;">100%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14418,55 +14594,55 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">意味</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">意味</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Coefficients</th>
-    <th style="text-align:left;">回帰分析の結果の主要部分を表示</th>
+    <th style="text-align: left;">Coefficients</th>
+    <th style="text-align: left;">回帰分析の結果の主要部分を表示</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Intercept</th>
-    <th style="text-align:left;">切片</th>
+    <th style="text-align: left;">Intercept</th>
+    <th style="text-align: left;">切片</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Estimate</th>
-    <th style="text-align:left;">偏回帰係数の推定値。 （単回帰分析の場合は直線の傾き）</th>
+    <th style="text-align: left;">Estimate</th>
+    <th style="text-align: left;">偏回帰係数の推定値。 （単回帰分析の場合は直線の傾き）</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Std.Error</th>
-    <th style="text-align:left;">標準誤差</th>
+    <th style="text-align: left;">Std.Error</th>
+    <th style="text-align: left;">標準誤差</th>
   </tr>
   <tr>
-    <th style="text-align:left;">t value</th>
-    <th style="text-align:left;">t値。説明変数の係数や定数項の確からしさの度合い</th>
+    <th style="text-align: left;">t value</th>
+    <th style="text-align: left;">t値。説明変数の係数や定数項の確からしさの度合い</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Pr(>|t|)</th>
-    <th style="text-align:left;">p値。説明変数の係数や定数項が”たまたま”その値である確率</th>
+    <th style="text-align: left;">Pr(&gt;|t|)</th>
+    <th style="text-align: left;">p値。説明変数の係数や定数項が”たまたま”その値である確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Residual standard error</th>
-    <th style="text-align:left;">残差の標準誤差と自由度(サンプルの数-説明変数の数-1)を表示</th>
+    <th style="text-align: left;">Residual standard error</th>
+    <th style="text-align: left;">残差の標準誤差と自由度(サンプルの数-説明変数の数-1)を表示</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Multiple R-squared</th>
-    <th style="text-align:left;">寄与率、決定係数</th>
+    <th style="text-align: left;">Multiple R-squared</th>
+    <th style="text-align: left;">寄与率、決定係数</th>
   </tr>
   <tr>
-    <th style="text-align:left;">Adjusted R-squared</th>
-    <th style="text-align:left;">調整済み寄与率、調整済み決定係数</th>
+    <th style="text-align: left;">Adjusted R-squared</th>
+    <th style="text-align: left;">調整済み寄与率、調整済み決定係数</th>
   </tr>
   <tr>
-    <th style="text-align:left;">f-statistic</th>
-    <th style="text-align:left;">F値</th>
+    <th style="text-align: left;">f-statistic</th>
+    <th style="text-align: left;">F値</th>
   </tr>
   <tr>
-    <th style="text-align:left;">p-value</th>
-    <th style="text-align:left;">p値</th>
+    <th style="text-align: left;">p-value</th>
+    <th style="text-align: left;">p値</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14475,15 +14651,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#20559;&#22238;&#24112;&#20418;&#25968;&#12398;&#20778;&#20301;&#24615;&#12398;&#26908;&#23450;(&#20001;&#20596;&#26908;&#23450;)">&#20559;&#22238;&#24112;&#20418;&#25968;&#12398;&#20778;&#20301;&#24615;&#12398;&#26908;&#23450;(&#20001;&#20596;&#26908;&#23450;)<a class="anchor-link" href="#&#20559;&#22238;&#24112;&#20418;&#25968;&#12398;&#20778;&#20301;&#24615;&#12398;&#26908;&#23450;(&#20001;&#20596;&#26908;&#23450;)">&#182;</a></h3><h5 id="&#23450;&#25968;&#38917;&#12418;&#21547;&#12417;&#12383;&#21508;&#20559;&#22238;&#24112;&#20418;&#25968;&#12364;0&#12391;&#12354;&#12427;&#12363;&#12395;&#12388;&#12356;&#12390;&#12398;&#26908;&#23450;">&#23450;&#25968;&#38917;&#12418;&#21547;&#12417;&#12383;&#21508;&#20559;&#22238;&#24112;&#20418;&#25968;&#12364;0&#12391;&#12354;&#12427;&#12363;&#12395;&#12388;&#12356;&#12390;&#12398;&#26908;&#23450;<a class="anchor-link" href="#&#23450;&#25968;&#38917;&#12418;&#21547;&#12417;&#12383;&#21508;&#20559;&#22238;&#24112;&#20418;&#25968;&#12364;0&#12391;&#12354;&#12427;&#12363;&#12395;&#12388;&#12356;&#12390;&#12398;&#26908;&#23450;">&#182;</a></h5><table>
-  <tr>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">2018/06[29]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">2018/06[29]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14492,37 +14668,37 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-    <tr>
-    <th style="text-align:left;">No</th>
-    <th style="text-align:left;">手順</th>
-    <th  width="650" style="text-align:left;">説明</th>
+    <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">帰無仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{0}$：偏回帰係数=○○</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">帰無仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{0}$：偏回帰係数=○○</th>
   </tr>
   <tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">対立仮説を立てる</th>
-    <th style="text-align:left;font-size: 15px;">$H_{1}$：偏回帰係数≠○○</th>
+    <th style="text-align: left;">02</th>
+    <th style="text-align: left;">対立仮説を立てる</th>
+    <th style="text-align: left; font-size: 15px;">$H_{1}$：偏回帰係数≠○○</th>
   </tr>
   <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">有意水準</th>
-    <th style="text-align:left;font-size: 15px;">α=0.05とする</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">有意水準</th>
+    <th style="text-align: left; font-size: 15px;">α=0.05とする</th>
   </tr>
    <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">統計量Tを算出</th>
-    <th style="text-align:left;font-size: 20px;">$t_i=\frac{\widehat{\beta}_i-○○}{se(\widehat{\beta}_i)}$<br>$\widehat{\beta}_i$：偏回帰係数<br>$se(\widehat{\beta}_i)$：標準誤差(標本から測定された統計量の標準偏差)</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">統計量Tを算出</th>
+    <th style="text-align: left; font-size: 20px;">$t_i=\frac{\widehat{\beta}_i-○○}{se(\widehat{\beta}_i)}$<br>$\widehat{\beta}_i$：偏回帰係数<br>$se(\widehat{\beta}_i)$：標準誤差(標本から測定された統計量の標準偏差)</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">t分布で有意水準か確認</th>
-    <th style="text-align:left;font-size: 15px;">統計量$t_i$の値が、自由度「n-k-1」で有意水準の半分の「0.025」の値より大きい場合は、帰無仮説を棄却<br>n：サンプルサイズ<br>k：説明変数の数</th>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">t分布で有意水準か確認</th>
+    <th style="text-align: left; font-size: 15px;">統計量$t_i$の値が、自由度「n-k-1」で有意水準の半分の「0.025」の値より大きい場合は、帰無仮説を棄却<br>n：サンプルサイズ<br>k：説明変数の数</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14555,22 +14731,22 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#32113;&#35336;&#26908;&#23450;3&#32026;&#12398;&#31684;&#22258;">&#32113;&#35336;&#26908;&#23450;3&#32026;&#12398;&#31684;&#22258;<a class="anchor-link" href="#&#32113;&#35336;&#26908;&#23450;3&#32026;&#12398;&#31684;&#22258;">&#182;</a></h2><table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">場合の数と確率</th>
-    <th style="text-align:left;">2018/11[15],2018/06[17]</th>
-    <th style="text-align:left;">50%</th>
+    <th style="text-align: left;">場合の数と確率</th>
+    <th style="text-align: left;">2018/11[15],2018/06[17]</th>
+    <th style="text-align: left;">50%</th>
   </tr>
   <tr>
-    <th style="text-align:left;">要約統計量(基本統計量、記述統計量、代表値)</th>
-    <th style="text-align:left;">2017/11[32]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">要約統計量(基本統計量、記述統計量、代表値)</th>
+    <th style="text-align: left;">2017/11[32]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14579,15 +14755,15 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th width=400  style="text-align:left;">公式</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">公式</th>
   </tr>
   <tr>
-    <th style="text-align:left;">場合の数と確率</th>
-    <th style="text-align:left;font-size: 20px;">$Aが起こる確率=\large{\frac{Aが起こる場合の数}{全ての場合の数}}$</th>
+    <th style="text-align: left;">場合の数と確率</th>
+    <th style="text-align: left; font-size: 20px;">$Aが起こる確率=\large{\frac{Aが起こる場合の数}{全ての場合の数}}$</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14604,17 +14780,17 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">用語</th>
-    <th style="text-align:left;">出題箇所</th>
-    <th style="text-align:left;">出題確率</th>
+  <tbody><tr>
+    <th style="text-align: left;">用語</th>
+    <th style="text-align: left;">出題箇所</th>
+    <th style="text-align: left;">出題確率</th>
   </tr>
   <tr>
-    <th style="text-align:left;">標本比率の和の標準誤差</th>
-    <th style="text-align:left;">2018/06[23]</th>
-    <th style="text-align:left;">25%</th>
+    <th style="text-align: left;">標本比率の和の標準誤差</th>
+    <th style="text-align: left;">2018/06[23]</th>
+    <th style="text-align: left;">25%</th>
   </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>
@@ -14623,44 +14799,106 @@ V( \bar{X} ) = V( \frac{1}{n} \sum_{k = 1}^{n} X_i )= (\frac{1}{n})^2 V( \sum_{k
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <table>
-  <tr>
-    <th style="text-align:left;">No</th>
-    <th width="200" style="text-align:left;">手順</th>
-    <th  width="800" style="text-align:left;">説明</th>
+  <tbody><tr>
+    <th style="text-align: left;">No</th>
+    <th style="text-align: left;">手順</th>
+    <th style="text-align: left;">説明</th>
   </tr>
   <tr>
-    <th style="text-align:left;">01</th>
-    <th style="text-align:left;">母比率の和の推定値を求める</th>
-    <th style="text-align:left;font-size: 15px;">$\LARGE{\frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} }$</th>
+    <th style="text-align: left;">01</th>
+    <th style="text-align: left;">母比率の和の推定値を求める</th>
+    <th style="text-align: left; font-size: 15px;">$\LARGE{\frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} }$</th>
   </tr>
-    <th style="text-align:left;">02</th>
-    <th style="text-align:left;">「母比率の和の推定値」<br>の分散を求める</th>
-    <th style="text-align:left;font-size: 15px;">$\large{ V\left[ \frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} \right] = V\left[ \frac{N_1\widehat{p}_1}{N_1+N_2} + \frac{N_2\widehat{p}_2}{N_1+N_2}\right]  = V\left[ \frac{N_1\widehat{p}_1}{N_1+N_2} \right] + V\left[ \frac{N_2\widehat{p}_2}{N_1+N_2}\right]  \\ }$<br>$\large{= \left( \frac{N_1}{N_1+N_2} \right)^2 V[\widehat{p}_1] + \left( \frac{N_2}{N_1+N_2} \right)^2 V[\widehat{p}_2]}$</th>
-  </tr>
-  <tr>
-    <th style="text-align:left;">03</th>
-    <th style="text-align:left;">正規分布へ近似</th>
-    <th style="text-align:left;font-size: 15px;">$X$が$B(n,p)$に従う時、十分大きなnに対して$\large{\widehat{p}}$は近似的に$\large{N(p, \frac{p(1-p)}{n})}$に従う。</th>
+    <tr><th style="text-align: left;">02</th>
+    <th style="text-align: left;">「母比率の和の推定値」<br>の分散を求める</th>
+    <th style="text-align: left; font-size: 15px;">$\large{ V\left[ \frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} \right] = V\left[ \frac{N_1\widehat{p}_1}{N_1+N_2} + \frac{N_2\widehat{p}_2}{N_1+N_2}\right]  = V\left[ \frac{N_1\widehat{p}_1}{N_1+N_2} \right] + V\left[ \frac{N_2\widehat{p}_2}{N_1+N_2}\right]  \\ }$<br>$\large{= \left( \frac{N_1}{N_1+N_2} \right)^2 V[\widehat{p}_1] + \left( \frac{N_2}{N_1+N_2} \right)^2 V[\widehat{p}_2]}$</th>
   </tr>
   <tr>
-    <th style="text-align:left;">04</th>
-    <th style="text-align:left;">「母比率の和の推定値」<br>の分散を求める</th>
-    <th style="text-align:left;font-size: 15px;">$\large{ V\left[ \frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} \right] = \left( \frac{N_1}{N_1+N_2} \right)^2 \frac{\widehat{p}_1(1-\widehat{p}_1)}{n_1} + \left( \frac{N_2}{N_1+N_2} \right)^2 \frac{\widehat{p}_2(1-\widehat{p}_2)}{n_2}}$</th>
+    <th style="text-align: left;">03</th>
+    <th style="text-align: left;">正規分布へ近似</th>
+    <th style="text-align: left; font-size: 15px;">$X$が$B(n,p)$に従う時、十分大きなnに対して$\large{\widehat{p}}$は近似的に$\large{N(p, \frac{p(1-p)}{n})}$に従う。</th>
   </tr>
   <tr>
-    <th style="text-align:left;">05</th>
-    <th style="text-align:left;">「母比率の和の推定値」<br>の標準誤差を求める</th>
-    <th style="text-align:left;font-size: 15px;">$\large{\sqrt{V\left[ \frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} \right]} = \sqrt{\left( \frac{N_1}{N_1+N_2} \right)^2 \frac{\widehat{p}_1(1-\widehat{p}_1)}{n_1} + \left( \frac{N_2}{N_1+N_2} \right)^2 \frac{\widehat{p}_2(1-\widehat{p}_2)}{n_2}}}$</th>
+    <th style="text-align: left;">04</th>
+    <th style="text-align: left;">「母比率の和の推定値」<br>の分散を求める</th>
+    <th style="text-align: left; font-size: 15px;">$\large{ V\left[ \frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} \right] = \left( \frac{N_1}{N_1+N_2} \right)^2 \frac{\widehat{p}_1(1-\widehat{p}_1)}{n_1} + \left( \frac{N_2}{N_1+N_2} \right)^2 \frac{\widehat{p}_2(1-\widehat{p}_2)}{n_2}}$</th>
   </tr>
-</table>
+  <tr>
+    <th style="text-align: left;">05</th>
+    <th style="text-align: left;">「母比率の和の推定値」<br>の標準誤差を求める</th>
+    <th style="text-align: left; font-size: 15px;">$\large{\sqrt{V\left[ \frac{N_1\widehat{p}_1+N_2\widehat{p}_2}{N_1+N_2} \right]} = \sqrt{\left( \frac{N_1}{N_1+N_2} \right)^2 \frac{\widehat{p}_1(1-\widehat{p}_1)}{n_1} + \left( \frac{N_2}{N_1+N_2} \right)^2 \frac{\widehat{p}_2(1-\widehat{p}_2)}{n_2}}}$</th>
+  </tr>
+</tbody></table>
 </div>
 </div>
+</div></section></section>
 </div>
-    </div>
-  </div>
-</body>
+</div>
 
- 
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "reveal.js/lib/js/head.min.js",
+      "reveal.js/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "reveal.js/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "reveal.js/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
+</body>
 
 
 </html>
